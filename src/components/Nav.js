@@ -20,6 +20,7 @@ export default ({
         align-items: center;
         border-bottom: 1px solid black;
         padding: 1rem 3rem;
+        background-color: floralwhite;
       `}
     >
       <Burger handleSidebar={handleSidebar} />
@@ -27,6 +28,10 @@ export default ({
         onClick={resetSearchQuery}
         css={css`
           text-decoration: none;
+
+          :visited {
+            color: black;
+          }
         `}
         to="/"
       >
@@ -39,6 +44,8 @@ export default ({
           border-left: 0;
           border-right: 0;
           border-bottom: 1px solid black;
+          border-top-left-radius: 7px;
+          border-top-right-radius: 7px;
           font-size: 15px;
           padding: 10px;
           width: 15rem;
@@ -55,6 +62,10 @@ export default ({
         onClick={resetSearchQuery}
         css={css`
           text-decoration: none;
+
+          :visited {
+            color: black;
+          }
         `}
         to="/"
       >
@@ -63,6 +74,10 @@ export default ({
       <Link
         css={css`
           text-decoration: none;
+
+          :visited {
+            color: black;
+          }
         `}
         to="/about"
       >
