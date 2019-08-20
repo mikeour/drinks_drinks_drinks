@@ -16,22 +16,22 @@ export default () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
-    const fetchDrinks = drink => {
-      if (searchQuery === "") {
-        setCocktails([]);
-      } else {
+    if (searchQuery !== "") {
+      const fetchDrinks = drink => {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drink}`;
         fetch(url)
           .then(raw => raw.json())
           .then(({ drinks }) => setCocktails(drinks));
-      }
-    };
+      };
 
-    const delayBeforeSearch = setTimeout(() => {
-      fetchDrinks(searchQuery);
-    }, 1000);
+      const delayBeforeSearch = setTimeout(() => {
+        fetchDrinks(searchQuery);
+      }, 1000);
 
-    return () => clearTimeout(delayBeforeSearch);
+      return () => clearTimeout(delayBeforeSearch);
+    } else {
+      setCocktails([]);
+    }
   }, [searchQuery]);
 
   const handleChange = e => {
@@ -40,6 +40,10 @@ export default () => {
 
   const handleSidebar = () => {
     setShowSidebar(prevState => !prevState);
+  };
+
+  const updateSearch = word => {
+    setSearchQuery(word);
   };
 
   const showSidebarStyles = css`
@@ -64,6 +68,8 @@ export default () => {
     grid-template-rows: 2fr 14fr 1fr;
   `;
 
+  const resetSearchQuery = () => setSearchQuery("");
+
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
       <Global
@@ -79,12 +85,23 @@ export default () => {
         `}
       />
       <Sidebar showSidebar={showSidebar} />
-      <Nav handleChange={handleChange} handleSidebar={handleSidebar} />
+      <Nav
+        handleChange={handleChange}
+        handleSidebar={handleSidebar}
+        searchQuery={searchQuery}
+        resetSearchQuery={resetSearchQuery}
+      />
       <Switch>
         <Route
           exact
           path="/"
-          render={props => <Grid cocktails={cocktails} />}
+          render={props => (
+            <Grid
+              cocktails={cocktails}
+              updateSearch={updateSearch}
+              searchQuery={searchQuery}
+            />
+          )}
         />
         <Route path="/drink/" component={Drink} />
         <Route path="/about" component={About} />

@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-export default ({ handleChange, handleSidebar }) => {
+export default ({
+  handleChange,
+  handleSidebar,
+  searchQuery,
+  resetSearchQuery
+}) => {
   return (
     <nav
       css={css`
@@ -13,12 +18,13 @@ export default ({ handleChange, handleSidebar }) => {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border: 1px solid black;
+        border-bottom: 1px solid black;
         padding: 1rem 3rem;
       `}
     >
       <Burger handleSidebar={handleSidebar} />
       <Link
+        onClick={resetSearchQuery}
         css={css`
           text-decoration: none;
         `}
@@ -42,9 +48,11 @@ export default ({ handleChange, handleSidebar }) => {
           }
         `}
         placeholder="Search by ingredient..."
+        value={searchQuery}
         onChange={handleChange}
       />
       <Link
+        onClick={resetSearchQuery}
         css={css`
           text-decoration: none;
         `}
