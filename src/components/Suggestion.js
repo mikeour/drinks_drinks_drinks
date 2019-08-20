@@ -22,7 +22,9 @@ export default ({ updateSearch }) => {
       "vermouth",
       "scotch",
       "mezcal",
-      "bourbon"
+      "bourbon",
+      "brandy",
+      "cognac"
     ];
     const min = 0;
     const max = ingredients.length;

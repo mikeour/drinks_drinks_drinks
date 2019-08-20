@@ -52,16 +52,25 @@ export default ({ cocktails, updateSearch, searchQuery }) => {
               width: 250px;
               height: 250px;
               opacity: 0.65;
+              margin-top: 100px;
+              margin-left: 8px;
+              animation-delay: 0.5s;
+              animation-duration: 2s;
+              animation-iteration-count: 0.25;
             `}
+            className="animated shake"
             src={image}
           />
           <h3
             css={css`
-              padding: 15px;
+              padding: 25px;
             `}
           >
-            <em>Curious? </em>Try searching for {memoIngredient1},{" "}
-            {memoIngredient2}, or {memoIngredient3}...
+            <em>
+              Curious? <br />{" "}
+            </em>
+            Try searching for {memoIngredient1}, {memoIngredient2}, or maybe{" "}
+            {memoIngredient3}...
           </h3>
         </>
       ) : null}

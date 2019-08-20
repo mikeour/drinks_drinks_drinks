@@ -74,13 +74,13 @@ export default () => {
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+          @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
 
           * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Roboto", sans-serif;
+            font-family: "Montserrat", sans-serif;
           }
         `}
       />
