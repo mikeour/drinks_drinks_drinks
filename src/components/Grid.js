@@ -6,7 +6,6 @@ import HappyHour3 from "../assets/happyhour2.gif";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { link } from "fs";
 
 const showLoading = css`
   grid-area: grid;
@@ -38,16 +37,48 @@ export default ({ cocktails, updateSearch, searchQuery }) => {
     return images[Math.floor(Math.random() * (max - min)) + min];
   }, []);
 
-  const ingredient = useCallback(() => {
-    const ingredients = ["rum", "gin", "vodka", "whiskey", "vermouth"];
+  const getIngredient = useCallback(() => {
+    const ingredients = [
+      "rum",
+      "gin",
+      "vodka",
+      "whiskey",
+      "vermouth",
+      "scotch",
+      "mezcal"
+    ];
     const min = 0;
     const max = ingredients.length;
     return ingredients[Math.floor(Math.random() * (max - min)) + min];
-  }, [cocktails]);
+  }, []);
 
-  const ingredient1 = ingredient();
-  const ingredient2 = ingredient();
-  const ingredient3 = ingredient();
+  const ingredient1 = useMemo(() => {
+    const ingredient = getIngredient();
+    return (
+      <span onClick={() => updateSearch(`${ingredient}`)}>
+        {" "}
+        <strong css={linkStyles}>{ingredient}</strong>
+      </span>
+    );
+  }, []);
+  const ingredient2 = useMemo(() => {
+    const ingredient = getIngredient();
+    return (
+      <span onClick={() => updateSearch(`${ingredient}`)}>
+        {" "}
+        <strong css={linkStyles}>{ingredient}</strong>
+      </span>
+    );
+  }, []);
+  const ingredient3 = useMemo(() => {
+    const ingredient = getIngredient();
+    return (
+      <span onClick={() => updateSearch(`${ingredient}`)}>
+        {" "}
+        <strong css={linkStyles}>{ingredient}</strong>
+      </span>
+    );
+  }, []);
 
   return (
     <main css={cocktails.length <= 0 ? hideLoading : showLoading}>
@@ -66,26 +97,13 @@ export default ({ cocktails, updateSearch, searchQuery }) => {
               padding: 15px;
             `}
           >
-            <em>Curious? </em>Try searching for
-            <span onClick={() => updateSearch(`${ingredient1}`)}>
-              {" "}
-              <strong css={linkStyles}>{ingredient1}</strong>
-            </span>
-            ,
-            <span onClick={() => updateSearch(`${ingredient2}`)}>
-              {" "}
-              <strong css={linkStyles}>{ingredient2}</strong>
-            </span>
-            ,
-            <span onClick={() => updateSearch(`${ingredient3}`)}>
-              {" or "}
-              <strong css={linkStyles}>{ingredient3}</strong>
-            </span>
-            , ...
+            <em>Curious? </em>Try searching for {ingredient1}, {ingredient2}, or{" "}
+            {ingredient3}
           </h3>
         </>
       ) : null}
-      {cocktails && cocktails.map(props => <Card {...props} />)}
+      {cocktails &&
+        cocktails.map(props => <Card key={props.idDrink} {...props} />)}
     </main>
   );
 };
