@@ -10,10 +10,37 @@ import Sidebar from "./Sidebar";
 /** @jsx jsx */
 import { Global, css, jsx } from "@emotion/core";
 
+const showSidebarStyles = css`
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "side nav"
+    "side grid"
+    "side footer";
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 2fr 14fr 1fr;
+`;
+
+const hideSidebarStyles = css`
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "nav"
+    "grid"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 14fr 1fr;
+`;
+
 export default () => {
   const [cocktails, setCocktails] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const handleChange = e => setSearchQuery(e.target.value);
+  const handleSidebar = () => setShowSidebar(prevState => !prevState);
+  const updateSearch = word => setSearchQuery(word);
+  const resetSearchQuery = () => setSearchQuery("");
 
   useEffect(() => {
     if (searchQuery !== "") {
@@ -33,33 +60,6 @@ export default () => {
       setCocktails([]);
     }
   }, [searchQuery]);
-
-  const handleChange = e => setSearchQuery(e.target.value);
-  const handleSidebar = () => setShowSidebar(prevState => !prevState);
-  const updateSearch = word => setSearchQuery(word);
-  const resetSearchQuery = () => setSearchQuery("");
-
-  const showSidebarStyles = css`
-    height: 100vh;
-    display: grid;
-    grid-template-areas:
-      "side nav"
-      "side grid"
-      "side footer";
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: 2fr 14fr 1fr;
-  `;
-
-  const hideSidebarStyles = css`
-    height: 100vh;
-    display: grid;
-    grid-template-areas:
-      "nav"
-      "grid"
-      "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 14fr 1fr;
-  `;
 
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
