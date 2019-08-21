@@ -17,14 +17,18 @@ export default ({ updateSearch }) => {
     const ingredients = [
       "rum",
       "gin",
+      "tequila",
       "vodka",
       "whiskey",
-      "vermouth",
       "scotch",
       "mezcal",
       "bourbon",
       "brandy",
-      "cognac"
+      "cognac",
+      "kahlua",
+      "triple sec",
+      "sweet vermouth",
+      "dry vermouth"
     ];
     const min = 0;
     const max = ingredients.length;
