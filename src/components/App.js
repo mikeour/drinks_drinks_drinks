@@ -5,10 +5,10 @@ import Grid from "./Grid";
 import About from "./About";
 import Drink from "./Drink";
 import Footer from "./Footer";
+import Sidebar from "./Sidebar";
 
 /** @jsx jsx */
 import { Global, css, jsx } from "@emotion/core";
-import Sidebar from "./Sidebar";
 
 export default () => {
   const [cocktails, setCocktails] = useState([]);
@@ -34,17 +34,10 @@ export default () => {
     }
   }, [searchQuery]);
 
-  const handleChange = e => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSidebar = () => {
-    setShowSidebar(prevState => !prevState);
-  };
-
-  const updateSearch = word => {
-    setSearchQuery(word);
-  };
+  const handleChange = e => setSearchQuery(e.target.value);
+  const handleSidebar = () => setShowSidebar(prevState => !prevState);
+  const updateSearch = word => setSearchQuery(word);
+  const resetSearchQuery = () => setSearchQuery("");
 
   const showSidebarStyles = css`
     height: 100vh;
@@ -67,8 +60,6 @@ export default () => {
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 14fr 1fr;
   `;
-
-  const resetSearchQuery = () => setSearchQuery("");
 
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
@@ -95,7 +86,7 @@ export default () => {
         <Route
           exact
           path="/"
-          render={props => (
+          render={() => (
             <Grid
               cocktails={cocktails}
               updateSearch={updateSearch}

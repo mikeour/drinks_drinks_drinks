@@ -30,7 +30,7 @@ export default ({
         css={css`
           position: relative;
           display: inline-flex;
-          width: 20%;
+          width: 25%;
           margin-right: 2%;
         `}
       >
@@ -91,6 +91,14 @@ export default ({
               animation: spin;
               animation-duration: 1s;
               animation-iteration-count: 1;
+
+              :hover {
+                opacity: 0.9;
+                transition: 1s;
+                width: 22px;
+                height: 22px;
+                padding-left: 7px;
+              }
 
               @keyframes spin {
                 from {
