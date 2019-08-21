@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Burger from "./Burger";
 import { Link } from "react-router-dom";
+import Close from "../assets/close.svg";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -23,33 +24,13 @@ export default ({
         background-color: floralwhite;
       `}
     >
-      <Burger
-        css={css`
-          flex-grow: 1;
-        `}
-        handleSidebar={handleSidebar}
-      />
-      <Link
-        onClick={resetSearchQuery}
-        css={css`
-          text-decoration: none;
-          flex-grow: 7;
-          margin-left: 2%;
-
-          :visited {
-            color: black;
-          }
-        `}
-        to="/"
-      >
-        <h1>Cocktail Recipes</h1>
-      </Link>
+      <Burger handleSidebar={handleSidebar} />
 
       <label
         css={css`
           position: relative;
-          display: inline-block;
-          flex-grow: 3;
+          display: inline-flex;
+          width: 20%;
           margin-right: 2%;
         `}
       >
@@ -64,7 +45,8 @@ export default ({
             background-color: floralwhite;
             font-size: 15px;
             width: 100%;
-            padding: 10px;
+            padding-bottom: 5px;
+            display: inline-block;
 
             :focus {
               outline: none;
@@ -94,39 +76,36 @@ export default ({
             transition-timing-function: ease;
             transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
             opacity: 0.5;
+            display: inline-block;
           `}
         >
           Search for ingredients...
         </span>
+        {searchQuery.length > 0 && (
+          <img
+            css={css`
+              padding-left: 5px;
+              width: 20px;
+              height: 20px;
+              opacity: 0.6;
+              animation: spin;
+              animation-duration: 1s;
+              animation-iteration-count: 1;
+
+              @keyframes spin {
+                from {
+                  transform: rotate(0deg);
+                }
+                to {
+                  transform: rotate(360deg);
+                }
+              }
+            `}
+            src={Close}
+            onClick={resetSearchQuery}
+          />
+        )}
       </label>
-
-      <Link
-        onClick={resetSearchQuery}
-        css={css`
-          text-decoration: none;
-          flex-grow: 0.3;
-
-          :visited {
-            color: black;
-          }
-        `}
-        to="/"
-      >
-        Home
-      </Link>
-      <Link
-        css={css`
-          text-decoration: none;
-          flex-grow: 0;
-
-          :visited {
-            color: black;
-          }
-        `}
-        to="/about"
-      >
-        About
-      </Link>
     </nav>
   );
 };

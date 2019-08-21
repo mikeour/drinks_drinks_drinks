@@ -84,7 +84,7 @@ export default () => {
           }
         `}
       />
-      <Sidebar showSidebar={showSidebar} />
+      <Sidebar showSidebar={showSidebar} resetSearchQuery={resetSearchQuery} />
       <Nav
         handleChange={handleChange}
         handleSidebar={handleSidebar}
