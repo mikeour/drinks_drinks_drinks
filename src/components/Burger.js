@@ -9,6 +9,13 @@ export default ({ handleSidebar }) => {
       css={css`
         display: flex;
         flex-direction: column;
+        opacity: 0.7;
+        transition: 0.7s linear;
+
+        :hover {
+          opacity: 1;
+          transform: scale(1.1, 1.1);
+        }
       `}
       onClick={handleSidebar}
     >
