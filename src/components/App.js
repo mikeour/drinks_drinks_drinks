@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Nav from "./Nav";
 import Grid from "./Grid";
@@ -73,6 +73,10 @@ export default () => {
             box-sizing: border-box;
             font-family: "Montserrat", sans-serif;
           }
+
+          :root {
+            --primary: floralwhite;
+          }
         `}
       />
       <Sidebar showSidebar={showSidebar} resetSearchQuery={resetSearchQuery} />
@@ -94,7 +98,17 @@ export default () => {
             />
           )}
         />
-        <Route path="/drink/" component={Drink} />
+        <Route
+          path="/drink/"
+          render={props => (
+            <Drink
+              {...props}
+              updateSearch={updateSearch}
+              cocktails={cocktails}
+              setCocktails={setCocktails}
+            />
+          )}
+        />
         <Route path="/about" component={About} />
       </Switch>
       <Footer />
