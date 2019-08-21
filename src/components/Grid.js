@@ -12,6 +12,7 @@ const showLoading = css`
   grid-area: grid;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   padding: 50px;
   grid-gap: 10px;
   overflow-y: auto;
@@ -51,9 +52,9 @@ export default ({ cocktails, updateSearch, searchQuery }) => {
             css={css`
               width: 250px;
               height: 250px;
-              opacity: 0.65;
+              opacity: 0.45;
               margin-top: 100px;
-              margin-left: 8px;
+              margin-left: 10px;
               animation-delay: 0.5s;
               animation-duration: 2s;
               animation-iteration-count: 0.25;
@@ -66,11 +67,12 @@ export default ({ cocktails, updateSearch, searchQuery }) => {
               padding: 25px;
             `}
           >
-            <em>
-              Curious? <br />{" "}
-            </em>
-            Try searching for {memoIngredient1}, {memoIngredient2}, or maybe{" "}
-            {memoIngredient3}...
+            <em>Need some inspiration? </em>
+            <br />
+            <br />
+            Try searching for {memoIngredient1}, {memoIngredient2}, or maybe
+            {"  "}
+            {memoIngredient3} ...
           </h3>
         </>
       ) : null}
