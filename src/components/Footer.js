@@ -7,10 +7,15 @@ export default () => (
   <footer
     css={css`
       grid-area: footer;
+      position: relative;
       border-top: 1px solid black;
-      background-color: floralwhite;
+      background-color: var(--primary);
     `}
   >
-    <h1 />
+    <h6
+      css={css`
+        left: 100%;
+      `}
+    />
   </footer>
 );
