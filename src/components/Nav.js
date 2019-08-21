@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Burger from "./Burger";
-import { Link } from "react-router-dom";
 import Close from "../assets/close.svg";
 
 /** @jsx jsx */
@@ -21,7 +20,7 @@ export default ({
         align-items: center;
         border-bottom: 1px solid black;
         padding: 1rem 3rem;
-        background-color: floralwhite;
+        background-color: var(--primary);
       `}
     >
       <Burger handleSidebar={handleSidebar} />
@@ -42,10 +41,13 @@ export default ({
             border-bottom: 1px solid black;
             border-top-left-radius: 7px;
             border-top-right-radius: 7px;
-            background-color: floralwhite;
+            background-color: var(--primary);
             font-size: 15px;
             width: 100%;
             padding-bottom: 5px;
+            padding-left: 3px;
+            padding-top: 3px;
+            opacity: 0.8;
             display: inline-block;
 
             :focus {
@@ -98,6 +100,7 @@ export default ({
                 width: 22px;
                 height: 22px;
                 padding-left: 7px;
+                transform: scale(1.1, 1.1);
               }
 
               @keyframes spin {
