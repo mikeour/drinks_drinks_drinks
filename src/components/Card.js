@@ -20,7 +20,7 @@ export default ({ strDrink, strDrinkThumb, idDrink }) => {
       css={css`
         border: 1px solid black;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         opacity: 0.8;
 
@@ -30,7 +30,13 @@ export default ({ strDrink, strDrinkThumb, idDrink }) => {
       `}
       onClick={handleClick}
     >
-      <p>{strDrink}</p>
+      <p
+        css={css`
+          text-align: center;
+        `}
+      >
+        {strDrink}
+      </p>
       <img
         css={css`
           width: 150px;
