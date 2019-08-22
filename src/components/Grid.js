@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from "react";
+import { useSelector } from "react-redux";
 import Card from "./Card";
 import Suggestion from "./Suggestion";
 import HappyHour from "../assets/happyhour.gif";
@@ -23,7 +24,9 @@ const hideLoading = css`
   text-align: center;
 `;
 
-export default ({ cocktails, updateSearch, searchQuery }) => {
+export default ({ updateSearch, searchQuery }) => {
+  const cocktails = useSelector(({ cocktails }) => cocktails.cocktails);
+
   const image = useMemo(() => {
     const images = [HappyHour, HappyHour2, HappyHour3];
     const min = 0;

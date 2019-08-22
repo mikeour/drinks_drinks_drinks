@@ -34,10 +34,16 @@ const hideSidebarStyles = css`
 `;
 
 const App = () => {
-  const [cocktails, setCocktails] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const showSidebar = useSelector(({ sidebar }) => sidebar.showSidebar);
+  const cocktails = useSelector(({ cocktails }) => cocktails.cocktails);
+  const searchQuery = useSelector(({ searchQuery }) => searchQuery.searchQuery);
   const dispatch = useDispatch();
+
+  const setCocktails = payload =>
+    dispatch({ type: "UPDATE_COCKTAILS", payload });
+  const clearCocktails = () => dispatch({ type: "CLEAR_COCKTAILS" });
+  const setSearchQuery = payload =>
+    dispatch({ type: "UPDATE_SEARCH_QUERY", payload });
 
   const handleChange = e => setSearchQuery(e.target.value);
   const handleSidebar = () => dispatch({ type: "TOGGLE_SIDEBAR" });
@@ -59,7 +65,7 @@ const App = () => {
 
       return () => clearTimeout(delayBeforeSearch);
     } else {
-      setCocktails([]);
+      clearCocktails();
     }
   }, [searchQuery]);
 
@@ -93,11 +99,7 @@ const App = () => {
           exact
           path="/"
           render={() => (
-            <Grid
-              cocktails={cocktails}
-              updateSearch={updateSearch}
-              searchQuery={searchQuery}
-            />
+            <Grid updateSearch={updateSearch} searchQuery={searchQuery} />
           )}
         />
         <Route
