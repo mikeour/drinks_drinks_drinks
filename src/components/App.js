@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Nav from "./Nav";
 import Grid from "./Grid";
 import About from "./About";
@@ -32,13 +33,14 @@ const hideSidebarStyles = css`
   grid-template-rows: 2fr 14fr 1fr;
 `;
 
-export default () => {
+const App = () => {
   const [cocktails, setCocktails] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showSidebar, setShowSidebar] = useState(false);
+  const showSidebar = useSelector(({ sidebar }) => sidebar.showSidebar);
+  const dispatch = useDispatch();
 
   const handleChange = e => setSearchQuery(e.target.value);
-  const handleSidebar = () => setShowSidebar(prevState => !prevState);
+  const handleSidebar = () => dispatch({ type: "TOGGLE_SIDEBAR" });
   const updateSearch = word => setSearchQuery(word);
   const resetSearchQuery = () => setSearchQuery("");
 
@@ -115,3 +117,5 @@ export default () => {
     </div>
   );
 };
+
+export default App;
