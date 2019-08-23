@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Nav from "./Nav";
@@ -33,22 +33,69 @@ const hideSidebarStyles = css`
   grid-template-rows: 2fr 14fr 1fr;
 `;
 
-const App = () => {
-  const showSidebar = useSelector(({ sidebar }) => sidebar.showSidebar);
-  const cocktails = useSelector(({ cocktails }) => cocktails.cocktails);
-  const searchQuery = useSelector(({ searchQuery }) => searchQuery.searchQuery);
-  const dispatch = useDispatch();
+const globalStyles = css`
+  @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
 
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --primary: honeydew;
+  }
+`;
+
+export const useSearchQuery = () => {
+  const dispatch = useDispatch();
+  const searchQuery = useSelector(({ searchQuery }) => searchQuery.searchQuery);
+  const setSearchQuery = payload =>
+    dispatch({ type: "UPDATE_SEARCH_QUERY", payload });
+  const resetSearchQuery = () => dispatch({ type: "RESET_SEARCH_QUERY" });
+  const handleChange = e =>
+    dispatch({ type: "UPDATE_SEARCH_QUERY", payload: e.target.value });
+
+  return {
+    dispatch,
+    searchQuery,
+    setSearchQuery,
+    resetSearchQuery,
+    handleChange
+  };
+};
+
+export const useCocktailsList = () => {
+  const dispatch = useDispatch();
+  const cocktails = useSelector(({ cocktails }) => cocktails.cocktails);
   const setCocktails = payload =>
     dispatch({ type: "UPDATE_COCKTAILS", payload });
   const clearCocktails = () => dispatch({ type: "CLEAR_COCKTAILS" });
-  const setSearchQuery = payload =>
-    dispatch({ type: "UPDATE_SEARCH_QUERY", payload });
 
-  const handleChange = e => setSearchQuery(e.target.value);
-  const handleSidebar = () => dispatch({ type: "TOGGLE_SIDEBAR" });
-  const updateSearch = word => setSearchQuery(word);
-  const resetSearchQuery = () => setSearchQuery("");
+  return { cocktails, setCocktails, clearCocktails };
+};
+
+export const useSidebar = () => {
+  const dispatch = useDispatch();
+  const showSidebar = useSelector(({ sidebar }) => sidebar.showSidebar);
+  const handleSidebar = e => dispatch({ type: "TOGGLE_SIDEBAR" });
+  return { showSidebar, handleSidebar };
+};
+
+const App = () => {
+  const {
+    searchQuery,
+    setSearchQuery,
+    resetSearchQuery,
+    handleChange
+  } = useSearchQuery();
+  const { cocktails, setCocktails, clearCocktails } = useCocktailsList();
+  const { showSidebar, handleSidebar } = useSidebar();
 
   useEffect(() => {
     if (searchQuery !== "") {
@@ -71,22 +118,7 @@ const App = () => {
 
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
-      <Global
-        styles={css`
-          @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
-
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Montserrat", sans-serif;
-          }
-
-          :root {
-            --primary: floralwhite;
-          }
-        `}
-      />
+      <Global styles={globalStyles} />
       <Sidebar showSidebar={showSidebar} resetSearchQuery={resetSearchQuery} />
       <Nav
         handleChange={handleChange}
@@ -99,7 +131,7 @@ const App = () => {
           exact
           path="/"
           render={() => (
-            <Grid updateSearch={updateSearch} searchQuery={searchQuery} />
+            <Grid setSearchQuery={setSearchQuery} cocktails={cocktails} />
           )}
         />
         <Route
@@ -107,7 +139,7 @@ const App = () => {
           render={props => (
             <Drink
               {...props}
-              updateSearch={updateSearch}
+              setSearchQuery={setSearchQuery}
               cocktails={cocktails}
               setCocktails={setCocktails}
             />
