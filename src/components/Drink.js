@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { useCocktailsList, useSearchQuery } from "./App";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-export default ({ location, cocktails, updateSearch, setCocktails }) => {
+export default ({ location }) => {
+  const { cocktails, setCocktails } = useCocktailsList();
+  const { setSearchQuery } = useSearchQuery();
   const [drink, setDrink] = useState({});
   const [nextDrink, setNextDrink] = useState({});
   const [prevDrink, setPrevDrink] = useState({});
@@ -31,7 +34,7 @@ export default ({ location, cocktails, updateSearch, setCocktails }) => {
 
   const handleRedirect = ingredient => {
     setCocktails([]);
-    updateSearch(ingredient.toLowerCase());
+    setSearchQuery(ingredient.toLowerCase());
     setRedirect(true);
   };
 
@@ -80,6 +83,7 @@ export default ({ location, cocktails, updateSearch, setCocktails }) => {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            border-right: 1px solid black;
           `}
         >
           {prevDrink && (
@@ -130,7 +134,7 @@ export default ({ location, cocktails, updateSearch, setCocktails }) => {
               width: 250px;
               height: 250px;
               border-radius: 50%;
-              border: 1px solid black;
+              box-shadow: 10px 10px 10px -10px rgba(0, 0, 0, 0.75);
             `}
             src={drink.strDrinkThumb}
           />
@@ -154,6 +158,7 @@ export default ({ location, cocktails, updateSearch, setCocktails }) => {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            border-left: 1px solid black;
           `}
         >
           {drink.strIngredient1 && (
