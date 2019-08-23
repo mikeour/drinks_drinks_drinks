@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 /** @jsx jsx */
@@ -11,7 +11,7 @@ const cardStyles = css`
   align-items: center;
   opacity: 0.8;
   box-shadow: 10px 10px 10px -4px rgba(0, 0, 0, 0.75);
-  transition: 0.5s;
+  transition: 0.3s;
 
   :hover {
     opacity: 1;
@@ -40,9 +40,7 @@ const imageStyles = css`
 const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
   const [redirect, setRedirect] = useState(false);
 
-  const handleClick = e => {
-    setRedirect(true);
-  };
+  const handleClick = e => setRedirect(true);
 
   if (redirect) {
     return <Redirect to={`/drink/${idDrink}`} />;
@@ -56,4 +54,4 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
   );
 };
 
-export default memo(Card);
+export default Card;
