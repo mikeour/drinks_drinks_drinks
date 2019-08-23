@@ -1,18 +1,101 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { useCocktailsList, useSearchQuery } from "./App";
+import { useSelector, useDispatch } from "react-redux";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-export default ({ location }) => {
-  const { cocktails, setCocktails } = useCocktailsList();
-  const { setSearchQuery } = useSearchQuery();
-  const [drink, setDrink] = useState({});
-  const [nextDrink, setNextDrink] = useState({});
-  const [prevDrink, setPrevDrink] = useState({});
-  const [redirect, setRedirect] = useState(false);
+const gridStyles = css`
+  display: grid;
+  grid-template-areas: "left middle right";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  height: 100%;
+`;
+
+const backButtonStyles = css`
+  position: absolute;
+  text-decoration: none;
+  color: black;
+  top: 30px;
+  left: 30px;
+
+  :visited {
+    color: black;
+  }
+`;
+
+const leftGridStyles = css`
+  grid-area: left;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-right: 1px solid black;
+`;
+
+const middleGridStyles = css`
+  grid-area: middle;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+`;
+
+const prevDrinkButtonStyles = css`
+  text-decoration: none;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid black;
+
+  :visited {
+    color: black;
+  }
+`;
+
+const drinkThumbnailStyles = css`
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 10px 10px 10px -10px rgba(0, 0, 0, 0.75);
+`;
+
+const useDrinkInfo = () => {
+  const dispatch = useDispatch();
+  const drink = useSelector(state => state.drink.drink);
+  const nextDrink = useSelector(state => state.drink.nextDrink);
+  const prevDrink = useSelector(state => state.drink.prevDrink);
+  const redirect = useSelector(state => state.drink.redirect);
+
+  return {
+    drink,
+    nextDrink,
+    prevDrink,
+    redirect,
+    setDrink: payload => dispatch({ type: "UPDATE_DRINK", payload }),
+    setNextDrink: payload => dispatch({ type: "UPDATE_NEXT_DRINK", payload }),
+    setPrevDrink: payload => dispatch({ type: "UPDATE_PREV_DRINK", payload }),
+    setRedirect: () => dispatch({ type: "UPDATE_REDIRECT" })
+  };
+};
+
+const Drink = ({ location, cocktails, setCocktails, setSearchQuery }) => {
   const drinkID = location.pathname.split("/")[2];
+  const {
+    drink,
+    nextDrink,
+    prevDrink,
+    redirect,
+    setDrink,
+    setNextDrink,
+    setPrevDrink,
+    setRedirect
+  } = useDrinkInfo();
 
   useEffect(() => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`;
@@ -44,61 +127,20 @@ export default ({ location }) => {
 
   return (
     <div>
-      <div
-        css={css`
-          display: grid;
-          grid-template-areas: "left middle right";
-          grid-template-columns: repeat(4, 1fr);
-          grid-template-rows: 1fr;
-          height: 100%;
-        `}
-      >
+      <div css={gridStyles}>
         <div
           css={css`
             position: absolute;
           `}
         >
-          <Link
-            css={css`
-              position: absolute;
-              text-decoration: none;
-              color: black;
-              top: 30px;
-              left: 30px;
-
-              :visited {
-                color: black;
-              }
-            `}
-            to="/"
-          >
+          <Link css={backButtonStyles} to="/">
             Back
           </Link>
         </div>
-        <div
-          css={css`
-            grid-area: left;
-            grid-column-start: 1;
-            grid-column-end: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-right: 1px solid black;
-          `}
-        >
+        <div css={leftGridStyles}>
           {prevDrink && (
             <Link
-              css={css`
-                text-decoration: none;
-                color: black;
-                padding: 15px;
-                text-align: center;
-                border: 1px solid black;
-
-                :visited {
-                  color: black;
-                }
-              `}
+              css={prevDrinkButtonStyles}
               to={`/drink/${prevDrink.idDrink}`}
             >
               <span>Previous Drink: {prevDrink.strDrink}</span>
@@ -106,18 +148,7 @@ export default ({ location }) => {
           )}
         </div>
 
-        <div
-          css={css`
-            grid-area: middle;
-            grid-column-start: 2;
-            grid-column-end: 4;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-            height: 100%;
-          `}
-        >
+        <div css={middleGridStyles}>
           <p>
             Drink name:{" "}
             <span
@@ -129,15 +160,7 @@ export default ({ location }) => {
               {drink.strDrink}
             </span>
           </p>
-          <img
-            css={css`
-              width: 250px;
-              height: 250px;
-              border-radius: 50%;
-              box-shadow: 10px 10px 10px -10px rgba(0, 0, 0, 0.75);
-            `}
-            src={drink.strDrinkThumb}
-          />
+          <img css={drinkThumbnailStyles} src={drink.strDrinkThumb} />
           <p css={css``}>
             Instructions:{" "}
             <span
@@ -209,3 +232,5 @@ export default ({ location }) => {
     </div>
   );
 };
+
+export default Drink;
