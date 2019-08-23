@@ -18,7 +18,7 @@ const showSidebarStyles = css`
     "side nav"
     "side grid"
     "side footer";
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 7fr;
   grid-template-rows: 2fr 14fr 1fr;
 `;
 
@@ -36,6 +36,10 @@ const hideSidebarStyles = css`
 const globalStyles = css`
   @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -43,49 +47,49 @@ const globalStyles = css`
     font-family: "Montserrat", sans-serif;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
   :root {
     --primary: honeydew;
   }
 `;
 
+// Custom Hooks
+
 export const useSearchQuery = () => {
   const dispatch = useDispatch();
-  const searchQuery = useSelector(({ searchQuery }) => searchQuery.searchQuery);
-  const setSearchQuery = payload =>
-    dispatch({ type: "UPDATE_SEARCH_QUERY", payload });
-  const resetSearchQuery = () => dispatch({ type: "RESET_SEARCH_QUERY" });
-  const handleChange = e =>
-    dispatch({ type: "UPDATE_SEARCH_QUERY", payload: e.target.value });
+  const searchQuery = useSelector(state => state.searchQuery.searchQuery);
 
   return {
-    dispatch,
     searchQuery,
-    setSearchQuery,
-    resetSearchQuery,
-    handleChange
+    setSearchQuery: payload =>
+      dispatch({ type: "UPDATE_SEARCH_QUERY", payload }),
+    resetSearchQuery: () => dispatch({ type: "RESET_SEARCH_QUERY" }),
+    handleChange: e =>
+      dispatch({ type: "UPDATE_SEARCH_QUERY", payload: e.target.value })
   };
 };
 
 export const useCocktailsList = () => {
   const dispatch = useDispatch();
-  const cocktails = useSelector(({ cocktails }) => cocktails.cocktails);
-  const setCocktails = payload =>
-    dispatch({ type: "UPDATE_COCKTAILS", payload });
-  const clearCocktails = () => dispatch({ type: "CLEAR_COCKTAILS" });
+  const cocktails = useSelector(state => state.cocktails.cocktails);
 
-  return { cocktails, setCocktails, clearCocktails };
+  return {
+    cocktails,
+    setCocktails: payload => dispatch({ type: "UPDATE_COCKTAILS", payload }),
+    clearCocktails: () => dispatch({ type: "CLEAR_COCKTAILS" })
+  };
 };
 
 export const useSidebar = () => {
   const dispatch = useDispatch();
-  const showSidebar = useSelector(({ sidebar }) => sidebar.showSidebar);
-  const handleSidebar = e => dispatch({ type: "TOGGLE_SIDEBAR" });
-  return { showSidebar, handleSidebar };
+  const showSidebar = useSelector(state => state.sidebar.showSidebar);
+
+  return {
+    showSidebar,
+    handleSidebar: e => dispatch({ type: "TOGGLE_SIDEBAR" })
+  };
 };
+
+// End of Custom Hooks
 
 const App = () => {
   const {
@@ -115,6 +119,8 @@ const App = () => {
       clearCocktails();
     }
   }, [searchQuery]);
+
+  useEffect(() => console.log("App is rendered"));
 
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
