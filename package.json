@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -r dist",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
