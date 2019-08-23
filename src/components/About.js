@@ -3,16 +3,16 @@ import React from "react";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-export default () => (
-  <div
-    css={css`
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 100px;
-    `}
-  >
+const aboutStyles = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10%;
+`;
+
+const About = () => (
+  <div css={aboutStyles}>
     <h1>About Drinks, Drinks, Drinks</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, ipsa
@@ -40,3 +40,5 @@ export default () => (
     </p>
   </div>
 );
+
+export default About;
