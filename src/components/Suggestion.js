@@ -12,7 +12,7 @@ const linkStyles = css`
   }
 `;
 
-export default ({ updateSearch }) => {
+export default ({ setSearchQuery }) => {
   const getIngredient = useCallback(() => {
     const ingredients = [
       "rum",
@@ -21,7 +21,6 @@ export default ({ updateSearch }) => {
       "vodka",
       "whiskey",
       "scotch",
-      "mezcal",
       "bourbon",
       "brandy",
       "cognac",
@@ -38,7 +37,7 @@ export default ({ updateSearch }) => {
   const ingredient = getIngredient();
 
   return (
-    <span onClick={() => updateSearch(`${ingredient}`)}>
+    <span onClick={() => setSearchQuery(`${ingredient}`)}>
       {" "}
       <strong css={linkStyles}>{ingredient}</strong>
     </span>
