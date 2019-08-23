@@ -2,7 +2,7 @@
 
 This web application utilizes React, React-Router, Redux, and Emotion to allows users to search the CocktailDB for cocktail recipes.
 
-![Example Usage](https://media.giphy.com/media/H436EWgGVFZxx5IGmO/giphy.gif)
+![Example Usage](https://thumbs.gfycat.com/AdorableForsakenBettong-size_restricted.gif)
 
 ## Quickstart
 
@@ -19,7 +19,7 @@ npm start
 ```
 
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:1234](http://localhost:1234) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
