@@ -3,7 +3,7 @@ import React from "react";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-export default () => (
+const Footer = () => (
   <footer
     css={css`
       grid-area: footer;
@@ -16,7 +16,7 @@ export default () => (
       css={css`
         position: absolute;
         top: 30%;
-        left: 93%;
+        left: 92%;
       `}
     >
       ©{" "}
@@ -38,3 +38,5 @@ export default () => (
     </h6>
   </footer>
 );
+
+export default Footer;
