@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import Card from "./Card";
 import Suggestion from "./Suggestion";
 import HappyHour from "../assets/happyhour.gif";
@@ -23,7 +23,7 @@ const hideLoading = css`
   text-align: center;
 `;
 
-export default ({ cocktails, setSearchQuery }) => {
+const Grid = ({ cocktails, setSearchQuery }) => {
   const image = useMemo(() => {
     const images = [HappyHour, HappyHour2, HappyHour3];
     const min = 0;
@@ -81,3 +81,5 @@ export default ({ cocktails, setSearchQuery }) => {
     </main>
   );
 };
+
+export default memo(Grid);
