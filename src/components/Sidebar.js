@@ -41,7 +41,7 @@ const Aside = styled.aside`
   background-color: var(--primary);
 `;
 
-export default ({ showSidebar, resetSearchQuery }) => {
+const Sidebar = ({ showSidebar, resetSearchQuery }) => {
   return (
     <Aside showSidebar={showSidebar}>
       <Link
@@ -74,3 +74,5 @@ export default ({ showSidebar, resetSearchQuery }) => {
     </Aside>
   );
 };
+
+export default Sidebar;
