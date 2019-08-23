@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo } from "react";
-import { useSelector } from "react-redux";
+import React, { useMemo } from "react";
 import Card from "./Card";
 import Suggestion from "./Suggestion";
 import HappyHour from "../assets/happyhour.gif";
@@ -13,9 +12,9 @@ const showLoading = css`
   grid-area: grid;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 1fr;
   padding: 50px;
-  grid-gap: 10px;
+  grid-gap: 14px;
   overflow-y: auto;
 `;
 
@@ -24,9 +23,7 @@ const hideLoading = css`
   text-align: center;
 `;
 
-export default ({ updateSearch, searchQuery }) => {
-  const cocktails = useSelector(({ cocktails }) => cocktails.cocktails);
-
+export default ({ cocktails, setSearchQuery }) => {
   const image = useMemo(() => {
     const images = [HappyHour, HappyHour2, HappyHour3];
     const min = 0;
@@ -35,15 +32,15 @@ export default ({ updateSearch, searchQuery }) => {
   }, []);
 
   const memoIngredient1 = useMemo(
-    () => <Suggestion updateSearch={updateSearch} />,
+    () => <Suggestion setSearchQuery={setSearchQuery} />,
     []
   );
   const memoIngredient2 = useMemo(
-    () => <Suggestion updateSearch={updateSearch} />,
+    () => <Suggestion setSearchQuery={setSearchQuery} />,
     []
   );
   const memoIngredient3 = useMemo(
-    () => <Suggestion updateSearch={updateSearch} />,
+    () => <Suggestion setSearchQuery={setSearchQuery} />,
     []
   );
 
