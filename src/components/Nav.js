@@ -94,7 +94,7 @@ const closeStyles = css`
   }
 `;
 
-export default ({
+const Nav = ({
   handleChange,
   handleSidebar,
   searchQuery,
@@ -119,3 +119,5 @@ export default ({
     </nav>
   );
 };
+
+export default Nav;
