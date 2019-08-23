@@ -12,8 +12,8 @@ const linkStyles = css`
   }
 `;
 
-export default ({ setSearchQuery }) => {
-  const getIngredient = useCallback(() => {
+const Suggestion = ({ setSearchQuery }) => {
+  const getIngredient = () => {
     const ingredients = [
       "rum",
       "gin",
@@ -32,14 +32,15 @@ export default ({ setSearchQuery }) => {
     const min = 0;
     const max = ingredients.length;
     return ingredients[Math.floor(Math.random() * (max - min)) + min];
-  }, []);
+  };
 
-  const ingredient = getIngredient();
+  const ingredient = useMemo(() => getIngredient(), []);
 
   return (
     <span onClick={() => setSearchQuery(`${ingredient}`)}>
-      {" "}
       <strong css={linkStyles}>{ingredient}</strong>
     </span>
   );
 };
+
+export default Suggestion;
