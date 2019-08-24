@@ -45,7 +45,7 @@ const Burger = ({ handleSidebar }) => {
           font-size: 1.4rem;
         `}
       >
-        <strong>Drinks, Drinks, Drinks</strong>
+        <strong>Drinks, Drinks, Drinks!!</strong>
       </div>
     </div>
   );
