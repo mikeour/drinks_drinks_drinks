@@ -111,7 +111,7 @@ const Nav = ({
           value={searchQuery}
           onChange={handleChange}
         />
-        <span css={spanStyles}>Search for ingredients...</span>
+        <span css={spanStyles}>Search for ingredients here...</span>
         {searchQuery.length > 0 && (
           <img css={closeStyles} src={Close} onClick={resetSearchQuery} />
         )}
