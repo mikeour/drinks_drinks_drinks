@@ -1,10 +1,13 @@
 import React, { useMemo } from "react";
+import { useSearchQuery } from "../App/App";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { linkStyles } from "./styles";
 
-const Suggestion = ({ setSearchQuery }) => {
+const Suggestion = () => {
+  const { setSearchQuery } = useSearchQuery();
+
   const getIngredient = () => {
     const ingredients = [
       "rum",
