@@ -1,5 +1,5 @@
-import React from "react";
-import Card from "../Card/Card";
+import React, { useState, useEffect, useRef } from "react";
+import Cocktails from "../Cocktails/Cocktails";
 import CenterImage from "../CenterImage/CenterImage";
 import Suggestion from "../Suggestion/Suggestion";
 import { useCocktailsList, useSearchQuery } from "../App/App";
@@ -8,9 +8,17 @@ import { useCocktailsList, useSearchQuery } from "../App/App";
 import { css, jsx } from "@emotion/core";
 import { showLoading, hideLoading } from "./styles";
 
+const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
+
 const Grid = () => {
   const { cocktails } = useCocktailsList();
   const { setSearchQuery } = useSearchQuery();
+  const [firstLetters, setFirstLetters] = useState([]);
+
+  useEffect(() => {
+    const first = [...new Set(cocktails.map(cocktail => cocktail.strDrink[0]))];
+    setFirstLetters(first);
+  }, [cocktails]);
 
   return (
     <main css={cocktails.length <= 0 ? hideLoading : showLoading}>
@@ -58,10 +66,17 @@ const Grid = () => {
           </div>
           <div
             css={css`
+              grid-area: alphabet;
+            `}
+          >
+            {/* {firstLetters && firstLetters.map(letter => <p>{letter}</p>)} */}
+          </div>
+          <div
+            css={css`
               grid-area: content;
               display: grid;
               grid-template-columns: 1fr;
-              grid-template-rows: repeat(auto-fit, 150px);
+              grid-template-rows: 1fr;
               justify-content: center;
               grid-gap: 15px;
               overflow-y: scroll;
@@ -69,8 +84,7 @@ const Grid = () => {
               padding: 30px 0;
             `}
           >
-            {cocktails &&
-              cocktails.map(props => <Card key={props.idDrink} {...props} />)}
+            {cocktails && <Cocktails />}
           </div>
           <div
             css={css`
