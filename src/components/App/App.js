@@ -51,17 +51,31 @@ export const useSidebar = () => {
   };
 };
 
+export const useDrinkInfo = () => {
+  const dispatch = useDispatch();
+  const drink = useSelector(state => state.drink.drink);
+  const nextDrink = useSelector(state => state.drink.nextDrink);
+  const prevDrink = useSelector(state => state.drink.prevDrink);
+  const redirect = useSelector(state => state.drink.redirect);
+
+  return {
+    drink,
+    nextDrink,
+    prevDrink,
+    redirect,
+    setDrink: payload => dispatch({ type: "UPDATE_DRINK", payload }),
+    setNextDrink: payload => dispatch({ type: "UPDATE_NEXT_DRINK", payload }),
+    setPrevDrink: payload => dispatch({ type: "UPDATE_PREV_DRINK", payload }),
+    setRedirect: () => dispatch({ type: "UPDATE_REDIRECT" })
+  };
+};
+
 // End of Custom Hooks
 
 const App = () => {
-  const {
-    searchQuery,
-    setSearchQuery,
-    resetSearchQuery,
-    handleChange
-  } = useSearchQuery();
-  const { cocktails, setCocktails, clearCocktails } = useCocktailsList();
-  const { showSidebar, handleSidebar } = useSidebar();
+  const { searchQuery } = useSearchQuery();
+  const { setCocktails, clearCocktails } = useCocktailsList();
+  const { showSidebar } = useSidebar();
 
   useEffect(() => {
     if (searchQuery !== "") {
@@ -85,31 +99,13 @@ const App = () => {
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
       <Global styles={globalStyles} />
-      <Sidebar showSidebar={showSidebar} resetSearchQuery={resetSearchQuery} />
-      <Nav
-        handleChange={handleChange}
-        handleSidebar={handleSidebar}
-        searchQuery={searchQuery}
-        resetSearchQuery={resetSearchQuery}
-      />
+      <Sidebar />
+      <Nav />
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <Grid setSearchQuery={setSearchQuery} cocktails={cocktails} />
-          )}
-        />
+        <Route exact path="/" component={Grid} />
         <Route
           path="/drink/"
-          render={props => (
-            <Drink
-              {...props}
-              setSearchQuery={setSearchQuery}
-              cocktails={cocktails}
-              setCocktails={setCocktails}
-            />
-          )}
+          render={({ location }) => <Drink location={location} />}
         />
         <Route path="/about" component={About} />
       </Switch>
