@@ -1,5 +1,7 @@
 # Drinks, Drinks, Drinks
 
+[![buddy pipeline](https://app.buddy.works/michaeljroeslein/drinks-drinks-drinks/pipelines/pipeline/206084/badge.svg?token=7d73f9cc2943069fefebda36433fea85b22c5d84c43fe492687560a85105e7dd "buddy pipeline")](https://app.buddy.works/michaeljroeslein/drinks-drinks-drinks/pipelines/pipeline/206084)
+
 This web application utilizes React, React-Router, Redux, and Emotion to allows users to search the CocktailDB for cocktail recipes.
 
 ![Example Usage](https://thumbs.gfycat.com/AdorableForsakenBettong-size_restricted.gif)
