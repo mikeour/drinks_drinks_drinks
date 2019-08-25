@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import React, { useMemo } from "react";
 import Card from "../Card/Card";
 import Suggestion from "../Suggestion/Suggestion";
 import HappyHour from "../../assets/happyhour.gif";
@@ -33,7 +33,7 @@ const Grid = ({ cocktails, setSearchQuery }) => {
   return (
     <main css={cocktails.length <= 0 ? hideLoading : showLoading}>
       {cocktails.length <= 0 && (
-        <>
+        <div>
           <img
             css={css`
               width: 250px;
@@ -60,7 +60,7 @@ const Grid = ({ cocktails, setSearchQuery }) => {
             {"  "}
             {memoIngredient3} ...
           </h3>
-        </>
+        </div>
       )}
 
       {cocktails &&
@@ -69,4 +69,4 @@ const Grid = ({ cocktails, setSearchQuery }) => {
   );
 };
 
-export default memo(Grid);
+export default Grid;

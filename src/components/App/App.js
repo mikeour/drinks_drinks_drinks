@@ -13,6 +13,8 @@ import { Global, jsx } from "@emotion/core";
 import { globalStyles, showSidebarStyles, hideSidebarStyles } from "./styles";
 
 // Custom Hooks
+// TODO: Relocate these hooks outside of this file. Right now, in order for dispatch
+//  to have the right context, it must be defined as a child of Provider in index.js
 
 export const useSearchQuery = () => {
   const dispatch = useDispatch();

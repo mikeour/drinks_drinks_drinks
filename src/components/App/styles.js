@@ -15,7 +15,7 @@ export const globalStyles = css`
   }
 
   :root {
-    --primary: floralwhite;
+    --primary: honeydew;
   }
 `;
 
