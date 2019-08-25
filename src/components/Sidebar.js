@@ -29,6 +29,15 @@ const fadeOut = keyframes`
   }
 `;
 
+const linkStyles = css`
+  text-decoration: none;
+  margin: 15px;
+
+  :visited {
+    color: black;
+  }
+`;
+
 const Aside = styled.aside`
   display: ${props => (props.showSidebar ? "flex" : "none")};
   animation: ${props => (props.showSidebar ? fadeIn : fadeOut)} 0.2s;
@@ -44,31 +53,10 @@ const Aside = styled.aside`
 const Sidebar = ({ showSidebar, resetSearchQuery }) => {
   return (
     <Aside showSidebar={showSidebar}>
-      <Link
-        onClick={resetSearchQuery}
-        css={css`
-          text-decoration: none;
-          margin: 15px;
-
-          :visited {
-            color: black;
-          }
-        `}
-        to="/"
-      >
+      <Link onClick={resetSearchQuery} css={linkStyles} to="/">
         Home
       </Link>
-      <Link
-        css={css`
-          text-decoration: none;
-          margin: 15px;
-
-          :visited {
-            color: black;
-          }
-        `}
-        to="/about"
-      >
+      <Link css={linkStyles} to="/about">
         About
       </Link>
     </Aside>

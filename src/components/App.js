@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import Nav from "./Nav";
 import Grid from "./Grid";
 import About from "./About";
@@ -48,7 +48,7 @@ const globalStyles = css`
   }
 
   :root {
-    --primary: honeydew;
+    --primary: floralwhite;
   }
 `;
 
