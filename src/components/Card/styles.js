@@ -2,6 +2,8 @@ import { css } from "@emotion/core";
 
 export const cardStyles = css`
   border: 1px solid black;
+  background-color: white;
+  margin: 0 60px;
   display: grid;
   grid-template-areas:
     "name name name image image"
@@ -16,8 +18,8 @@ export const cardStyles = css`
     opacity: 1;
     box-shadow: 10px 10px 12px -4px rgba(0, 0, 0, 0.75);
     background: white;
-    z-index: 2;
-    transform: scale(1.2);
+    z-index: 99;
+    transform: scale(1.05);
     cursor: pointer;
   }
 `;
@@ -31,8 +33,8 @@ export const drinkNameStyles = css`
 
 export const imageStyles = css`
   grid-area: image;
-  max-width: 145px;
-  max-height: 145px;
+  width: 145px;
+  height: 145px;
   justify-content: center;
   margin: 0 auto;
   border: 0.5px solid darkgray;

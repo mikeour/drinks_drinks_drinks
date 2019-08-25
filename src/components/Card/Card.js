@@ -16,7 +16,6 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
     fetch(url)
       .then(raw => raw.json())
       .then(({ drinks }) => {
-        console.log("have it", drinks[0]);
         setDrink(drinks[0]);
       });
   }, []);
@@ -27,7 +26,7 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
 
   return (
     <div css={cardStyles} onClick={handleClick}>
-      <p css={drinkNameStyles}>
+      <div css={drinkNameStyles}>
         <p
           css={css`
             font-size: 0.6rem;
@@ -36,8 +35,8 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
           Name:
         </p>
         {strDrink}
-      </p>
-      <p
+      </div>
+      <div
         css={css`
           grid-area: details;
           padding-left: 1rem;
@@ -52,7 +51,7 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
           Served in:
         </p>
         {drink.strGlass}
-      </p>
+      </div>
       <img css={imageStyles} src={strDrinkThumb} />
     </div>
   );
