@@ -1,16 +1,8 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
-
-const linkStyles = css`
-  text-decoration: underline;
-  font-style: italic;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
+import { jsx } from "@emotion/core";
+import { linkStyles } from "./styles";
 
 const Suggestion = ({ setSearchQuery }) => {
   const getIngredient = () => {

@@ -1,27 +1,13 @@
 import React, { memo, useMemo } from "react";
-import Card from "./Card";
-import Suggestion from "./Suggestion";
-import HappyHour from "../assets/happyhour.gif";
-import HappyHour2 from "../assets/happyhour1.gif";
-import HappyHour3 from "../assets/happyhour2.gif";
+import Card from "../Card/Card";
+import Suggestion from "../Suggestion/Suggestion";
+import HappyHour from "../../assets/happyhour.gif";
+import HappyHour2 from "../../assets/happyhour1.gif";
+import HappyHour3 from "../../assets/happyhour2.gif";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-
-const showLoading = css`
-  grid-area: grid;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  padding: 50px;
-  grid-gap: 14px;
-  overflow-y: auto;
-`;
-
-const hideLoading = css`
-  position: relative;
-  text-align: center;
-`;
+import { showLoading, hideLoading } from "./styles";
 
 const Grid = ({ cocktails, setSearchQuery }) => {
   const image = useMemo(() => {
@@ -46,7 +32,7 @@ const Grid = ({ cocktails, setSearchQuery }) => {
 
   return (
     <main css={cocktails.length <= 0 ? hideLoading : showLoading}>
-      {cocktails.length <= 0 ? (
+      {cocktails.length <= 0 && (
         <>
           <img
             css={css`
@@ -75,7 +61,8 @@ const Grid = ({ cocktails, setSearchQuery }) => {
             {memoIngredient3} ...
           </h3>
         </>
-      ) : null}
+      )}
+
       {cocktails &&
         cocktails.map(props => <Card key={props.idDrink} {...props} />)}
     </main>

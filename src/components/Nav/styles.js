@@ -1,11 +1,6 @@
-import React from "react";
-import Burger from "./Burger";
-import Close from "../assets/close.svg";
+import { css } from "@emotion/core";
 
-/** @jsx jsx */
-import { css, jsx } from "@emotion/core";
-
-const navStyles = css`
+export const navStyles = css`
   grid-area: nav;
   display: flex;
   justify-content: space-between;
@@ -16,14 +11,14 @@ const navStyles = css`
   background-color: var(--primary);
 `;
 
-const labelStyles = css`
+export const labelStyles = css`
   position: relative;
   display: inline-flex;
   width: 25%;
   margin-right: 2%;
 `;
 
-const inputStyles = css`
+export const inputStyles = css`
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -45,16 +40,16 @@ const inputStyles = css`
 
   :focus + span {
     opacity: 1;
-    transform: scale(0.75) translateY(-100%) translateX(-30px);
+    transform: scale(0.75) translateY(-100%) translateX(-40px);
   }
 
   :not(:placeholder-shown) + span {
     opacity: 1;
-    transform: scale(0.75) translateY(-100%) translateX(-30px);
+    transform: scale(0.75) translateY(-100%) translateX(-40px);
   }
 `;
 
-const spanStyles = css`
+export const spanStyles = css`
   pointer-events: none;
   position: absolute;
   left: 0;
@@ -66,7 +61,7 @@ const spanStyles = css`
   display: inline-block;
 `;
 
-const closeStyles = css`
+export const closeStyles = css`
   padding-left: 5px;
   width: 20px;
   height: 20px;
@@ -93,31 +88,3 @@ const closeStyles = css`
     }
   }
 `;
-
-const Nav = ({
-  handleChange,
-  handleSidebar,
-  searchQuery,
-  resetSearchQuery
-}) => {
-  return (
-    <nav css={navStyles}>
-      <Burger handleSidebar={handleSidebar} />
-
-      <label css={labelStyles}>
-        <input
-          css={inputStyles}
-          placeholder=" "
-          value={searchQuery}
-          onChange={handleChange}
-        />
-        <span css={spanStyles}>Search for ingredients here...</span>
-        {searchQuery.length > 0 && (
-          <img css={closeStyles} src={Close} onClick={resetSearchQuery} />
-        )}
-      </label>
-    </nav>
-  );
-};
-
-export default Nav;

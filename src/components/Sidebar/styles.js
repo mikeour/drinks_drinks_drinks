@@ -1,9 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { css, keyframes } from "@emotion/core";
 import styled from "@emotion/styled";
-
-/** @jsx jsx */
-import { css, jsx, keyframes } from "@emotion/core";
 
 const fadeIn = keyframes`
   from {
@@ -29,16 +25,17 @@ const fadeOut = keyframes`
   }
 `;
 
-const linkStyles = css`
+export const linkStyles = css`
   text-decoration: none;
   margin: 15px;
+  color: black;
 
   :visited {
     color: black;
   }
 `;
 
-const Aside = styled.aside`
+export const Aside = styled.aside`
   display: ${props => (props.showSidebar ? "flex" : "none")};
   animation: ${props => (props.showSidebar ? fadeIn : fadeOut)} 0.2s;
   transition: all 2s;
@@ -49,18 +46,3 @@ const Aside = styled.aside`
   border-right: 1px solid black;
   background-color: var(--primary);
 `;
-
-const Sidebar = ({ showSidebar, resetSearchQuery }) => {
-  return (
-    <Aside showSidebar={showSidebar}>
-      <Link onClick={resetSearchQuery} css={linkStyles} to="/">
-        Home
-      </Link>
-      <Link css={linkStyles} to="/about">
-        About
-      </Link>
-    </Aside>
-  );
-};
-
-export default Sidebar;

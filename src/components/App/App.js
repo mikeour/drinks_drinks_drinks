@@ -1,56 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-import Nav from "./Nav";
-import Grid from "./Grid";
-import About from "./About";
-import Drink from "./Drink";
-import Footer from "./Footer";
-import Sidebar from "./Sidebar";
+import Nav from "../Nav/Nav";
+import Grid from "../Grid/Grid";
+import About from "../About/About";
+import Drink from "../Drink/Drink";
+import Footer from "../Footer/Footer";
+import Sidebar from "../Sidebar/Sidebar";
 
 /** @jsx jsx */
-import { Global, css, jsx } from "@emotion/core";
-
-const showSidebarStyles = css`
-  height: 100vh;
-  display: grid;
-  grid-template-areas:
-    "side nav"
-    "side grid"
-    "side footer";
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 2fr 14fr 1fr;
-`;
-
-const hideSidebarStyles = css`
-  height: 100vh;
-  display: grid;
-  grid-template-areas:
-    "nav"
-    "grid"
-    "footer";
-  grid-template-columns: 1fr;
-  grid-template-rows: 2fr 14fr 1fr;
-`;
-
-const globalStyles = css`
-  @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-  }
-
-  :root {
-    --primary: floralwhite;
-  }
-`;
+import { Global, jsx } from "@emotion/core";
+import { globalStyles, showSidebarStyles, hideSidebarStyles } from "./styles";
 
 // Custom Hooks
 
@@ -119,8 +79,6 @@ const App = () => {
       clearCocktails();
     }
   }, [searchQuery]);
-
-  useEffect(() => console.log("App is rendered"));
 
   return (
     <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>

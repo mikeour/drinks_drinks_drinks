@@ -1,15 +1,8 @@
 import React from "react";
 
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
-
-const aboutStyles = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10%;
-`;
+import { jsx } from "@emotion/core";
+import { aboutStyles } from "./styles";
 
 const About = () => (
   <div css={aboutStyles}>
