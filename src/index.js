@@ -1,15 +1,11 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
-import App from "./components/App";
-import rootReducer from "./reducers/";
+import store from "./store";
+import App from "./components/App/App";
 
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const mountNode = document.getElementById("root");
 
 render(
   <Provider store={store}>
@@ -18,5 +14,5 @@ render(
     </Router>
   </Provider>,
 
-  document.getElementById("root")
+  mountNode
 );
