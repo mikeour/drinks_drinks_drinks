@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSidebar, useSearchQuery } from "../App/App";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { linkStyles, Aside } from "./styles";
 
-const Sidebar = ({ showSidebar, resetSearchQuery }) => {
+const Sidebar = () => {
+  const { showSidebar } = useSidebar();
+  const { resetSearchQuery } = useSearchQuery();
+
   return (
     <Aside showSidebar={showSidebar}>
       <Link onClick={resetSearchQuery} css={linkStyles} to="/">
