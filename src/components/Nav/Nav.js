@@ -1,6 +1,7 @@
 import React from "react";
 import Burger from "../Burger/Burger";
 import Close from "../../assets/close.svg";
+import { useSearchQuery, useSidebar } from "../App/App";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -12,12 +13,10 @@ import {
   closeStyles
 } from "./styles";
 
-const Nav = ({
-  handleChange,
-  handleSidebar,
-  searchQuery,
-  resetSearchQuery
-}) => {
+const Nav = () => {
+  const { searchQuery, resetSearchQuery, handleChange } = useSearchQuery();
+  const { handleSidebar } = useSidebar();
+
   return (
     <nav css={navStyles}>
       <Burger handleSidebar={handleSidebar} />
