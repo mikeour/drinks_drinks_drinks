@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSidebar, useSearchQuery } from "../App/App";
+import { useSidebar, useSearchQuery, useDrinkInfo } from "../App/App";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -9,6 +9,12 @@ import { burgerStyles, buttonStyles } from "./styles";
 const Burger = () => {
   const { handleSidebar } = useSidebar();
   const { resetSearchQuery } = useSearchQuery();
+  const { toggleDrinkInfoOff } = useDrinkInfo();
+
+  const reset = e => {
+    toggleDrinkInfoOff();
+    resetSearchQuery();
+  };
 
   return (
     <div
@@ -37,7 +43,7 @@ const Burger = () => {
             color: black;
           }
         `}
-        onClick={resetSearchQuery}
+        onClick={reset}
         to="/"
       >
         <strong>Drinks, Drinks, Drinks</strong>
