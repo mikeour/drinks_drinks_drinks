@@ -2,7 +2,7 @@ const initialState = {
   drink: {},
   nextDrink: {},
   prevDrink: {},
-  redirect: false
+  showDrinkInfo: false
 };
 
 export default (state = initialState, action) => {
@@ -13,8 +13,10 @@ export default (state = initialState, action) => {
       return { ...state, nextDrink: action.payload };
     case "UPDATE_PREV_DRINK":
       return { ...state, prevDrink: action.payload };
-    case "UPDATE_REDIRECT":
-      return { ...state, redirect: true };
+    case "SHOW_DRINK_INFO":
+      return { ...state, showDrinkInfo: true };
+    case "HIDE_DRINK_INFO":
+      return { ...state, showDrinkInfo: false };
     default:
       return state;
   }

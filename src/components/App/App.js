@@ -56,17 +56,18 @@ export const useDrinkInfo = () => {
   const drink = useSelector(state => state.drink.drink);
   const nextDrink = useSelector(state => state.drink.nextDrink);
   const prevDrink = useSelector(state => state.drink.prevDrink);
-  const redirect = useSelector(state => state.drink.redirect);
+  const showDrinkInfo = useSelector(state => state.drink.showDrinkInfo);
 
   return {
     drink,
     nextDrink,
     prevDrink,
-    redirect,
+    showDrinkInfo,
     setDrink: payload => dispatch({ type: "UPDATE_DRINK", payload }),
     setNextDrink: payload => dispatch({ type: "UPDATE_NEXT_DRINK", payload }),
     setPrevDrink: payload => dispatch({ type: "UPDATE_PREV_DRINK", payload }),
-    setRedirect: () => dispatch({ type: "UPDATE_REDIRECT" })
+    toggleDrinkInfoOn: () => dispatch({ type: "SHOW_DRINK_INFO" }),
+    toggleDrinkInfoOff: () => dispatch({ type: "HIDE_DRINK_INFO" })
   };
 };
 
