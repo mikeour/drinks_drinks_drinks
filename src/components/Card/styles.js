@@ -6,9 +6,9 @@ export const cardStyles = css`
   margin: 0 60px;
   display: grid;
   grid-template-areas:
-    "name name name image image"
-    "details details details image image";
-  grid-template-columns: repeat(5, 1fr);
+    "name name image"
+    "details details image";
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   opacity: 0.8;
   box-shadow: 10px 10px 10px -4px rgba(0, 0, 0, 0.75);

@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { useDrinkInfo } from "../App/App";
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import { cardStyles, drinkNameStyles, imageStyles } from "./styles";
 
 const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
-  const [redirect, setRedirect] = useState(false);
+  const {
+    showDrinkInfo,
+    toggleDrinkInfoOff,
+    toggleDrinkInfoOn
+  } = useDrinkInfo();
   const [drink, setDrink] = useState({});
 
-  const handleClick = e => setRedirect(true);
+  const handleClick = e => toggleDrinkInfoOn();
 
   useEffect(() => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`;
@@ -19,10 +23,6 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
         setDrink(drinks[0]);
       });
   }, []);
-
-  if (redirect) {
-    return <Redirect to={`/drink/${idDrink}`} />;
-  }
 
   return (
     <div css={cardStyles} onClick={handleClick}>
