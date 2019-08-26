@@ -2,17 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import Cocktails from "../Cocktails/Cocktails";
 import CenterImage from "../CenterImage/CenterImage";
 import Suggestion from "../Suggestion/Suggestion";
-import { useCocktailsList, useSearchQuery } from "../App/App";
+import { useCocktailsList, useDrinkInfo } from "../App/App";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { showLoading, hideLoading } from "./styles";
+import { showLoading, hideLoading, showDrinkInfoStyles } from "./styles";
 
 const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
 
 const Grid = () => {
   const { cocktails } = useCocktailsList();
-  const { setSearchQuery } = useSearchQuery();
+  const { showDrinkInfo } = useDrinkInfo();
   const [firstLetters, setFirstLetters] = useState([]);
 
   useEffect(() => {
@@ -21,9 +21,17 @@ const Grid = () => {
   }, [cocktails]);
 
   return (
-    <main css={cocktails.length <= 0 ? hideLoading : showLoading}>
+    <main
+      css={
+        cocktails.length <= 0
+          ? hideLoading
+          : showDrinkInfo
+          ? showDrinkInfoStyles
+          : showLoading
+      }
+    >
       {cocktails.length <= 0 ? (
-        <CenterImage setSearchQuery={setSearchQuery} />
+        <CenterImage />
       ) : (
         <>
           <div
@@ -69,7 +77,16 @@ const Grid = () => {
               grid-area: alphabet;
             `}
           >
-            {/* {firstLetters && firstLetters.map(letter => <p>{letter}</p>)} */}
+            {/* {firstLetters &&
+              firstLetters.map(letter => (
+                <span
+                  css={css`
+                    padding: 3px;
+                  `}
+                >
+                  {letter}
+                </span>
+              ))} */}
           </div>
           <div
             css={css`
