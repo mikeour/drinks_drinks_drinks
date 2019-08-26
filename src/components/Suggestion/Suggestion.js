@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useSearchQuery } from "../App/App";
+import { useSearchQuery, useDrinkInfo } from "../App/App";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -7,6 +7,7 @@ import { linkStyles } from "./styles";
 
 const Suggestion = () => {
   const { setSearchQuery } = useSearchQuery();
+  const { toggleDrinkInfoOff } = useDrinkInfo();
 
   const getIngredient = () => {
     const ingredients = [
@@ -31,8 +32,13 @@ const Suggestion = () => {
 
   const ingredient = useMemo(() => getIngredient(), []);
 
+  const reset = () => {
+    setSearchQuery(`${ingredient}`);
+    toggleDrinkInfoOff();
+  };
+
   return (
-    <span onClick={() => setSearchQuery(`${ingredient}`)}>
+    <span onClick={reset}>
       <strong css={linkStyles}>{ingredient}</strong>
     </span>
   );
