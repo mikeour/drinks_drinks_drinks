@@ -7,7 +7,7 @@ import HappyHour3 from "../../assets/happyhour2.gif";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-const CenterImage = ({ setSearchQuery }) => {
+const CenterImage = () => {
   const image = useMemo(() => {
     const images = [HappyHour, HappyHour2, HappyHour3];
     const min = 0;
@@ -15,18 +15,9 @@ const CenterImage = ({ setSearchQuery }) => {
     return images[Math.floor(Math.random() * (max - min)) + min];
   }, []);
 
-  const memoIngredient1 = useMemo(
-    () => <Suggestion setSearchQuery={setSearchQuery} />,
-    []
-  );
-  const memoIngredient2 = useMemo(
-    () => <Suggestion setSearchQuery={setSearchQuery} />,
-    []
-  );
-  const memoIngredient3 = useMemo(
-    () => <Suggestion setSearchQuery={setSearchQuery} />,
-    []
-  );
+  const memoIngredient1 = useMemo(() => <Suggestion />, []);
+  const memoIngredient2 = useMemo(() => <Suggestion />, []);
+  const memoIngredient3 = useMemo(() => <Suggestion />, []);
   return (
     <div>
       <img
