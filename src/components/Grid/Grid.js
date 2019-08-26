@@ -2,18 +2,36 @@ import React, { useState, useEffect, useRef } from "react";
 import Cocktails from "../Cocktails/Cocktails";
 import CenterImage from "../CenterImage/CenterImage";
 import Suggestion from "../Suggestion/Suggestion";
+import Info from "../Info/Info";
 import { useCocktailsList, useDrinkInfo } from "../App/App";
+import alphabet from "../../lib/alphabet";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { showLoading, hideLoading, showDrinkInfoStyles } from "./styles";
-
-const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
+import {
+  showLoading,
+  hideLoading,
+  showDrinkInfoStyles,
+  regularLetterStyles,
+  boldLetterStyles
+} from "./styles";
 
 const Grid = () => {
   const { cocktails } = useCocktailsList();
   const { showDrinkInfo } = useDrinkInfo();
   const [firstLetters, setFirstLetters] = useState([]);
+
+  const refs = alphabet.reduce((acc, value) => {
+    acc[value] = useRef(value);
+    return acc;
+  }, {});
+
+  const handleClick = letter => {
+    refs[letter].current.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  };
 
   useEffect(() => {
     const first = [...new Set(cocktails.map(cocktail => cocktail.strDrink[0]))];
@@ -75,18 +93,25 @@ const Grid = () => {
           <div
             css={css`
               grid-area: alphabet;
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              width: 100%;
+              border-bottom: 1px solid black;
             `}
           >
-            {/* {firstLetters &&
-              firstLetters.map(letter => (
-                <span
-                  css={css`
-                    padding: 3px;
-                  `}
+            {alphabet.map(char => {
+              const doesExist = firstLetters.includes(char);
+              return (
+                <div
+                  css={doesExist ? boldLetterStyles : regularLetterStyles}
+                  onClick={() => handleClick(char)}
+                  key={char}
                 >
-                  {letter}
-                </span>
-              ))} */}
+                  {char}
+                </div>
+              );
+            })}
           </div>
           <div
             css={css`
@@ -101,13 +126,15 @@ const Grid = () => {
               padding: 30px 0;
             `}
           >
-            {cocktails && <Cocktails />}
+            {cocktails && <Cocktails refs={refs} />}
           </div>
           <div
             css={css`
               grid-area: right;
             `}
-          />
+          >
+            {showDrinkInfo && <Info />}
+          </div>
         </>
       )}
     </main>

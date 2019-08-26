@@ -5,7 +5,7 @@ import { useCocktailsList } from "../App/App";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-const Cocktails = () => {
+const Cocktails = ({ refs }) => {
   const { cocktails } = useCocktailsList();
   const [sortedDrinks, setSortedDrinks] = useState({});
 
@@ -38,16 +38,18 @@ const Cocktails = () => {
       {cocktails &&
         Object.entries(sortedDrinks).map((group, idx) => {
           const [letter, letterCocktails] = group;
+
           return (
             <div key={idx}>
-              <div
+              <p
                 css={css`
                   text-align: center;
                   font-size: 1.6rem;
                 `}
+                ref={refs[letter]}
               >
                 <em>{letter}</em>
-              </div>
+              </p>
               {letterCocktails.map(props => (
                 <div
                   css={css`
