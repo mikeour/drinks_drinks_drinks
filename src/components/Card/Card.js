@@ -6,21 +6,20 @@ import { jsx, css } from "@emotion/core";
 import { cardStyles, drinkNameStyles, imageStyles } from "./styles";
 
 const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
-  const {
-    showDrinkInfo,
-    toggleDrinkInfoOff,
-    toggleDrinkInfoOn
-  } = useDrinkInfo();
-  const [drink, setDrink] = useState({});
+  const { toggleDrinkInfoOn, setDrink } = useDrinkInfo();
+  const [drink, setOtherDrink] = useState({});
 
-  const handleClick = e => toggleDrinkInfoOn();
+  const handleClick = e => {
+    setDrink(drink);
+    toggleDrinkInfoOn();
+  };
 
   useEffect(() => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`;
     fetch(url)
       .then(raw => raw.json())
       .then(({ drinks }) => {
-        setDrink(drinks[0]);
+        setOtherDrink(drinks[0]);
       });
   }, []);
 
