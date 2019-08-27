@@ -2,7 +2,7 @@ import { css } from "@emotion/core";
 
 export const cardStyles = css`
   border: 1px solid black;
-  background-color: white;
+  background-color: var(--secondary);
   margin: 0 60px;
   display: grid;
   grid-template-areas:
@@ -17,7 +17,7 @@ export const cardStyles = css`
   :hover {
     opacity: 1;
     box-shadow: 10px 10px 12px -4px rgba(0, 0, 0, 0.75);
-    background: white;
+    background: var(--secondary);
     z-index: 99;
     transform: scale(1.05);
     cursor: pointer;

@@ -16,6 +16,7 @@ export const globalStyles = css`
 
   :root {
     --primary: honeydew;
+    --secondary: white;
   }
 `;
 
