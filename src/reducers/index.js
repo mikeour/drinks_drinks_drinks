@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import sidebar from "./sidebar";
-import cocktails from "./cocktails";
-import searchQuery from "./searchQuery";
-import drink from "./drink";
+import sidebar from "./sidebarReducer";
+import cocktails from "./cocktailsReducer";
+import searchQuery from "./searchQueryReducer";
+import drink from "./drinkReducer";
 
 export default combineReducers({
   sidebar,
