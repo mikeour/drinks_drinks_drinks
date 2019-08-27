@@ -3,7 +3,7 @@ import Cocktails from "../Cocktails/Cocktails";
 import CenterImage from "../CenterImage/CenterImage";
 import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
-import { useCocktailsList, useDrinkInfo } from "../App/App";
+import { useCocktailsList, useDrinkInfo, useSearchQuery } from "../App/App";
 import alphabet from "../../lib/alphabet";
 
 /** @jsx jsx */
@@ -13,21 +13,23 @@ import {
   hideLoading,
   showDrinkInfoStyles,
   regularLetterStyles,
-  boldLetterStyles
+  boldLetterStyles,
+  suggestionStyles
 } from "./styles";
 
 const Grid = () => {
   const { cocktails } = useCocktailsList();
   const { showDrinkInfo } = useDrinkInfo();
+  const { searchQuery } = useSearchQuery();
   const [firstLetters, setFirstLetters] = useState([]);
 
-  const refs = alphabet.reduce((acc, value) => {
-    acc[value] = useRef(value);
+  const refDictionary = alphabet.reduce((acc, letter) => {
+    acc[letter] = useRef(letter);
     return acc;
   }, {});
 
   const handleClick = letter => {
-    refs[letter].current.scrollIntoView({
+    refDictionary[letter].current.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
@@ -56,6 +58,7 @@ const Grid = () => {
             css={css`
               grid-area: left;
               position: relative;
+              background-color: var(--secondary);
             `}
           >
             <div
@@ -66,26 +69,36 @@ const Grid = () => {
                 transform: translate(-50%, -50%);
               `}
             >
+              <div>
+                Showing
+                <p
+                  css={css`
+                    font-size: 1.15rem;
+                    padding: 5px;
+                  `}
+                >
+                  {cocktails.length} results
+                </p>
+                for
+                <span
+                  css={css`
+                    font-size: 1.15rem;
+                    padding: 5px;
+                  `}
+                >
+                  {searchQuery}
+                </span>
+              </div>
+              <br></br>
+              <br></br>
               <p>Other popular searches:</p>
-              <div
-                css={css`
-                  padding: 10px 0;
-                `}
-              >
+              <div css={suggestionStyles}>
                 <Suggestion />
               </div>
-              <div
-                css={css`
-                  padding: 10px 0;
-                `}
-              >
+              <div css={suggestionStyles}>
                 <Suggestion />
               </div>
-              <div
-                css={css`
-                  padding: 10px 0;
-                `}
-              >
+              <div css={suggestionStyles}>
                 <Suggestion />
               </div>
             </div>
@@ -122,15 +135,15 @@ const Grid = () => {
               justify-content: center;
               grid-gap: 15px;
               overflow-y: scroll;
-
               padding: 30px 0;
             `}
           >
-            {cocktails && <Cocktails refs={refs} />}
+            {cocktails && <Cocktails refDictionary={refDictionary} />}
           </div>
           <div
             css={css`
               grid-area: right;
+              background-color: var(--secondary);
             `}
           >
             {showDrinkInfo && <Info />}

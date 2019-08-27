@@ -44,3 +44,7 @@ export const boldLetterStyles = css`
     cursor: pointer;
   }
 `;
+
+export const suggestionStyles = css`
+  padding: 10px 0;
+`;
