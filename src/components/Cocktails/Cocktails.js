@@ -5,7 +5,7 @@ import { useCocktailsList } from "../App/App";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 
-const Cocktails = ({ refs }) => {
+const Cocktails = ({ refDictionary }) => {
   const { cocktails } = useCocktailsList();
   const [sortedDrinks, setSortedDrinks] = useState({});
 
@@ -46,7 +46,7 @@ const Cocktails = ({ refs }) => {
                   text-align: center;
                   font-size: 1.6rem;
                 `}
-                ref={refs[letter]}
+                ref={refDictionary[letter]}
               >
                 <em>{letter}</em>
               </p>
