@@ -6,6 +6,7 @@ import HappyHour3 from "../../assets/happyhour2.gif";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { centerImageStyles } from "./styles";
 
 const CenterImage = () => {
   const image = useMemo(() => {
@@ -20,20 +21,7 @@ const CenterImage = () => {
   const memoIngredient3 = useMemo(() => <Suggestion />, []);
   return (
     <div>
-      <img
-        css={css`
-          width: 250px;
-          height: 250px;
-          opacity: 0.45;
-          margin-top: 100px;
-          margin-left: 10px;
-          animation-delay: 0.5s;
-          animation-duration: 2s;
-          animation-iteration-count: 0.25;
-        `}
-        className="animated shake"
-        src={image}
-      />
+      <img css={centerImageStyles} className="animated shake" src={image} />
       <h3
         css={css`
           padding: 25px;
@@ -42,7 +30,8 @@ const CenterImage = () => {
         <em>Need some inspiration? </em>
         <br />
         <br />
-        Try searching for {memoIngredient1}, {memoIngredient2}, or maybe{"  "}
+        Try searching for {memoIngredient1}, {memoIngredient2}, or maybe even{" "}
+        {"  "}
         {memoIngredient3} ...
       </h3>
     </div>
