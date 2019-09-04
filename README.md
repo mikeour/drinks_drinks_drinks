@@ -4,7 +4,7 @@
 
 This web application utilizes React, React-Router, Redux, and Emotion to allows users to search the CocktailDB for cocktail recipes.
 
-![Example Usage](https://thumbs.gfycat.com/AdorableForsakenBettong-size_restricted.gif)
+![Example Usage](https://thumbs.gfycat.com/AnxiousGrouchyGermanpinscher-size_restricted.gif)
 
 ## Quickstart
 
