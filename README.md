@@ -6,6 +6,18 @@ This web application utilizes React, React-Router, Redux, and Emotion to allows 
 
 ![Example Usage](https://thumbs.gfycat.com/AnxiousGrouchyGermanpinscher-size_restricted.gif)
 
+# Technologies Used
+
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [React-Router](https://reacttraining.com/react-router/)
+- [Emotion](https://emotion.sh/docs/introduction)
+
+- [AWS S3](https://aws.amazon.com/s3/)
+- [AWS Cloudflare](https://aws.amazon.com/cloudfront/)
+- [AWS Route 53](https://aws.amazon.com/route53/)
+- [Buddy.Works](https://buddy.works/)
+
 ## Quickstart
 
 Install dependencies
