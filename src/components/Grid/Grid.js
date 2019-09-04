@@ -3,7 +3,8 @@ import Cocktails from "../Cocktails/Cocktails";
 import CenterImage from "../CenterImage/CenterImage";
 import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
-import { useCocktailsList, useDrinkInfo, useSearchQuery } from "../App/App";
+import Spinner from "../Spinner/Spinner";
+import { useCocktailsList, useDrinkInfo } from "../App/App";
 import alphabet from "../../lib/alphabet";
 
 /** @jsx jsx */
@@ -18,9 +19,8 @@ import {
 } from "./styles";
 
 const Grid = () => {
-  const { cocktails } = useCocktailsList();
+  const { cocktails, loading } = useCocktailsList();
   const { showDrinkInfo } = useDrinkInfo();
-  const { searchQuery } = useSearchQuery();
   const [firstLetters, setFirstLetters] = useState([]);
 
   const refDictionary = alphabet.reduce((acc, letter) => {
@@ -58,39 +58,36 @@ const Grid = () => {
             css={css`
               grid-area: left;
               position: relative;
+              display: grid;
+              grid-template-areas:
+                "top"
+                "bottom";
+              grid-template-columns: 1fr;
+              grid-template-rows: 1fr 1fr;
+              justify-content: space-evenly;
               background-color: var(--secondary);
             `}
           >
+            {!loading && (
+              <div
+                css={css`
+                  grid-area: top;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                `}
+              ></div>
+            )}
             <div
               css={css`
+                grid-area: bottom;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
               `}
             >
-              <div>
-                Showing
-                <p
-                  css={css`
-                    font-size: 1.15rem;
-                    padding: 5px;
-                  `}
-                >
-                  {cocktails.length} results
-                </p>
-                for
-                <span
-                  css={css`
-                    font-size: 1.15rem;
-                    padding: 5px;
-                  `}
-                >
-                  {searchQuery}
-                </span>
-              </div>
-              <br></br>
-              <br></br>
               <p>Other popular searches:</p>
               <div css={suggestionStyles}>
                 <Suggestion />
@@ -103,6 +100,7 @@ const Grid = () => {
               </div>
             </div>
           </div>
+
           <div
             css={css`
               grid-area: alphabet;
@@ -138,7 +136,11 @@ const Grid = () => {
               padding: 30px 0;
             `}
           >
-            {cocktails && <Cocktails refDictionary={refDictionary} />}
+            {loading ? (
+              <Spinner />
+            ) : (
+              <Cocktails refDictionary={refDictionary} />
+            )}
           </div>
           <div
             css={css`
