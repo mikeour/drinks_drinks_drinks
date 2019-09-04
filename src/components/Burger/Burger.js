@@ -30,7 +30,7 @@ const Burger = () => {
         <div css={burgerStyles} />
       </div>
       <Link css={linkStyles} onClick={resetSearch} to="/">
-        <strong>Drinks, Drinks, Drinks!</strong>
+        <strong>Drinks, Drinks, Drinks</strong>
       </Link>
     </div>
   );
