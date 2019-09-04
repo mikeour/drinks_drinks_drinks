@@ -18,7 +18,7 @@ import { globalStyles, showSidebarStyles, hideSidebarStyles } from "./styles";
 
 export const useSearchQuery = () => {
   const dispatch = useDispatch();
-  const searchQuery = useSelector(state => state.searchQuery.searchQuery);
+  const { searchQuery } = useSelector(state => state.searchQuery);
 
   return {
     searchQuery,
@@ -32,18 +32,21 @@ export const useSearchQuery = () => {
 
 export const useCocktailsList = () => {
   const dispatch = useDispatch();
-  const cocktails = useSelector(state => state.cocktails.cocktails);
+  const { cocktails, loading } = useSelector(state => state.cocktails);
 
   return {
     cocktails,
+    loading,
     setCocktails: payload => dispatch({ type: "UPDATE_COCKTAILS", payload }),
-    clearCocktails: () => dispatch({ type: "CLEAR_COCKTAILS" })
+    clearCocktails: () => dispatch({ type: "CLEAR_COCKTAILS" }),
+    toggleLoadingOn: () => dispatch({ type: "TOGGLE_LOADING_ON" }),
+    toggleLoadingOff: () => dispatch({ type: "TOGGLE_LOADING_OFF" })
   };
 };
 
 export const useSidebar = () => {
   const dispatch = useDispatch();
-  const showSidebar = useSelector(state => state.sidebar.showSidebar);
+  const { showSidebar } = useSelector(state => state.sidebar);
 
   return {
     showSidebar,
@@ -53,10 +56,9 @@ export const useSidebar = () => {
 
 export const useDrinkInfo = () => {
   const dispatch = useDispatch();
-  const drink = useSelector(state => state.drink.drink);
-  const nextDrink = useSelector(state => state.drink.nextDrink);
-  const prevDrink = useSelector(state => state.drink.prevDrink);
-  const showDrinkInfo = useSelector(state => state.drink.showDrinkInfo);
+  const { drink, nextDrink, prevDrink, showDrinkInfo } = useSelector(
+    state => state.drink
+  );
 
   return {
     drink,
@@ -75,16 +77,24 @@ export const useDrinkInfo = () => {
 
 const App = () => {
   const { searchQuery } = useSearchQuery();
-  const { setCocktails, clearCocktails } = useCocktailsList();
+  const {
+    setCocktails,
+    clearCocktails,
+    toggleLoadingOff,
+    toggleLoadingOn
+  } = useCocktailsList();
   const { showSidebar } = useSidebar();
 
   useEffect(() => {
     if (searchQuery !== "") {
+      toggleLoadingOn();
+
       const fetchDrinks = drink => {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drink}`;
         fetch(url)
           .then(raw => raw.json())
-          .then(({ drinks }) => setCocktails(drinks));
+          .then(({ drinks }) => setCocktails(drinks))
+          .then(toggleLoadingOff);
       };
 
       const delayBeforeSearch = setTimeout(() => {
