@@ -1,0 +1,23 @@
+export default [
+  "rum",
+  "gin",
+  "tequila",
+  "vodka",
+  "whiskey",
+  "scotch",
+  "bourbon",
+  "brandy",
+  "cognac",
+  "light rum",
+  "dark rum",
+  "triple sec",
+  "sweet vermouth",
+  "dry vermouth",
+  "blue curacao",
+  "lemon juice",
+  "lime juice",
+  "maraschino liqueur",
+  "grenadine",
+  "pineapple juice",
+  "sugar"
+];
