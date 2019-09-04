@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDrinkInfo, useSearchQuery } from "../App/App";
+import Close from "../../assets/close.svg";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { closeStyles } from "./styles";
 
 const Redirect = ({ ingredient }) => {
   const { setSearchQuery } = useSearchQuery();
@@ -27,33 +29,52 @@ const Redirect = ({ ingredient }) => {
 };
 
 const Info = () => {
-  const { drink } = useDrinkInfo();
+  const { drink, toggleDrinkInfoOff } = useDrinkInfo();
+
+  useEffect(() => {
+    let formatted = [];
+    for (let i = 1; i < 16; i++) {
+      const ingredient = `strIngredient${i}`;
+      const measurement = `strMeasure${i}`;
+      formatted.push({
+        [ingredient]: drink[ingredient],
+        [measurement]: drink[measurement]
+      });
+    }
+    console.log(formatted);
+  }, [drink]);
 
   return (
-    <div
-      css={css`
-        display: grid;
-        width: 100%;
-        height: 100%;
-        grid-template-areas:
-          "name name name name name"
-          "ingredients ingredients ingredients image image"
-          "instructions instructions instructions instructions instructions";
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        background-color: var(--secondary);
-      `}
-    >
+    <div css={mainInfoStyles}>
       <div
         css={css`
           grid-area: name;
           text-align: center;
           align-self: center;
-          font-size: 1.6rem;
+          font-size: 2rem;
         `}
+        onClick={toggleDrinkInfoOff}
       >
-        {drink.strDrink}
+        <p
+          css={css`
+            font-size: 0.75rem;
+            padding: 0.4rem;
+            display: inline-block;
+          `}
+        >
+          <em>Drink name</em>
+          <span
+            css={css`
+              font-size: 2rem;
+              padding: 0 2rem;
+            `}
+          >
+            {drink.strDrink}
+          </span>
+        </p>
+        <img css={closeStyles} src={Close} onClick={toggleDrinkInfoOff} />
       </div>
+
       <div
         css={css`
           grid-area: ingredients;
@@ -61,21 +82,45 @@ const Info = () => {
           height: 100%;
           justify-content: center;
           align-items: center;
-          margin: auto;
-
           position: relative;
         `}
       >
         <div
           css={css`
             position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
             top: 50%;
             left: 50%;
-            height: 40%;
-            width: 55%;
+            height: 60%;
+            width: 80%;
             transform: translate(-50%, -50%);
           `}
         >
+          <div
+            css={css`
+              display: flex;
+              justify-content: space-between;
+            `}
+          >
+            <div
+              css={css`
+                font-size: 0.75rem;
+                padding: 0.4rem;
+              `}
+            >
+              <em>Ingredients</em>
+            </div>
+            <div
+              css={css`
+                font-size: 0.75rem;
+                padding: 0.4rem;
+              `}
+            >
+              <em>Measurements</em>
+            </div>
+          </div>
           <div
             css={css`
               display: flex;
@@ -199,11 +244,10 @@ const Info = () => {
           css={css`
             position: absolute;
             top: 50%;
-            left: 30%;
-            transform: translate(-50%, -70%);
-
-            width: 75%;
-            height: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
             border-radius: 3%;
           `}
           src={drink.strDrinkThumb}
@@ -215,7 +259,6 @@ const Info = () => {
           grid-area: instructions;
           width: 100%;
           height: 100%;
-
           overflow-y: auto;
           position: relative;
         `}
@@ -234,7 +277,13 @@ const Info = () => {
               font-size: 0.75rem;
             `}
           >
-            Instructions:
+            <em
+              css={css`
+                padding: 0.6rem;
+              `}
+            >
+              Instructions
+            </em>
           </p>
           <p>{drink.strInstructions}</p>
         </div>
