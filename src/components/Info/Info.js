@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDrinkInfo, useSearchQuery } from "../App/App";
+import React from "react";
+import { useDrinkInfo, useSearchQuery } from "../../hooks";
 import Close from "../../assets/close.svg";
 
 /** @jsx jsx */
@@ -30,19 +30,6 @@ const Redirect = ({ ingredient }) => {
 
 const Info = () => {
   const { drink, toggleDrinkInfoOff } = useDrinkInfo();
-
-  useEffect(() => {
-    let formatted = [];
-    for (let i = 1; i < 16; i++) {
-      const ingredient = `strIngredient${i}`;
-      const measurement = `strMeasure${i}`;
-      formatted.push({
-        [ingredient]: drink[ingredient],
-        [measurement]: drink[measurement]
-      });
-    }
-    console.log(formatted);
-  }, [drink]);
 
   return (
     <div css={mainInfoStyles}>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { useCocktailsList, useSearchQuery, useDrinkInfo } from "../App/App";
+import { useCocktailsList, useSearchQuery, useDrinkInfo } from "../../hooks";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";

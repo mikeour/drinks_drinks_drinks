@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSidebar, useSearchQuery } from "../App/App";
+import { useSidebar, useSearchQuery } from "../../hooks";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
-import { useCocktailsList } from "../App/App";
+import { useCocktailsList } from "../../hooks";
 import numbers from "../../lib/numbers";
 
 /** @jsx jsx */

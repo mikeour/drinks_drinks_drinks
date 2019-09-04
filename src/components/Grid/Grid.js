@@ -4,7 +4,7 @@ import CenterImage from "../CenterImage/CenterImage";
 import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
 import Spinner from "../Spinner/Spinner";
-import { useCocktailsList, useDrinkInfo } from "../App/App";
+import { useCocktailsList, useDrinkInfo } from "../../hooks";
 import alphabet from "../../lib/alphabet";
 
 /** @jsx jsx */

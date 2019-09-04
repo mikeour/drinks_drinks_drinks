@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDrinkInfo } from "../App/App";
+import { useDrinkInfo } from "../../hooks";
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";

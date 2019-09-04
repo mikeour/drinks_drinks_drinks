@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSidebar, useSearchQuery, useDrinkInfo } from "../App/App";
+import { useSidebar, useSearchQuery, useDrinkInfo } from "../../hooks";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";

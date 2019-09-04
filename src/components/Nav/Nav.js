@@ -1,7 +1,7 @@
 import React from "react";
 import Burger from "../Burger/Burger";
 import Close from "../../assets/close.svg";
-import { useSearchQuery, useSidebar } from "../App/App";
+import { useSearchQuery, useSidebar } from "../../hooks";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";

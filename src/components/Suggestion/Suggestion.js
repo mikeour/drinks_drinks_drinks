@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useSearchQuery, useDrinkInfo } from "../App/App";
+import { useSearchQuery, useDrinkInfo } from "../../hooks";
 import ingredients from "../../lib/ingredients";
 
 /** @jsx jsx */
