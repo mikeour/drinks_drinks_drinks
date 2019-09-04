@@ -4,7 +4,7 @@ import Close from "../../assets/close.svg";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { closeStyles } from "./styles";
+import { closeStyles, mainInfoStyles } from "./styles";
 
 const Redirect = ({ ingredient }) => {
   const { setSearchQuery } = useSearchQuery();
