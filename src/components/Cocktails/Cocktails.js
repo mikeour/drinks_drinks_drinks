@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import { useCocktailsList } from "../App/App";
+import numbers from "../../lib/numbers";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -10,10 +11,10 @@ const Cocktails = ({ refDictionary }) => {
   const [sortedDrinks, setSortedDrinks] = useState({});
 
   useEffect(() => {
-    const sorted = cocktails.reduce((acc, cur) => {
+    const sortedDrinksByFirstLetter = cocktails.reduce((acc, cur) => {
       let firstLetter = cur.strDrink[0];
 
-      ["'", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].forEach(char => {
+      numbers.forEach(char => {
         if (firstLetter === char) {
           firstLetter = "#";
         }
@@ -25,7 +26,7 @@ const Cocktails = ({ refDictionary }) => {
       return acc;
     }, {});
 
-    setSortedDrinks(sorted);
+    setSortedDrinks(sortedDrinksByFirstLetter);
   }, [cocktails]);
 
   return (
