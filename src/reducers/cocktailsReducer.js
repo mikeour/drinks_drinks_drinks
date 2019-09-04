@@ -1,5 +1,6 @@
 const initialState = {
-  cocktails: []
+  cocktails: [],
+  loading: false
 };
 
 export default (state = initialState, action) => {
@@ -8,6 +9,10 @@ export default (state = initialState, action) => {
       return { ...state, cocktails: action.payload };
     case "CLEAR_COCKTAILS":
       return { ...state, cocktails: [] };
+    case "TOGGLE_LOADING_ON":
+      return { ...state, loading: true };
+    case "TOGGLE_LOADING_OFF":
+      return { ...state, loading: false };
     default:
       return state;
   }
