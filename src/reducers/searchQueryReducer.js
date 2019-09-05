@@ -1,12 +1,14 @@
+import { UPDATE_SEARCH_QUERY, RESET_SEARCH_QUERY } from "../actions";
+
 const initialState = {
   searchQuery: ""
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "UPDATE_SEARCH_QUERY":
+    case UPDATE_SEARCH_QUERY:
       return { ...state, searchQuery: action.payload };
-    case "RESET_SEARCH_QUERY":
+    case RESET_SEARCH_QUERY:
       return { ...state, searchQuery: "" };
     default:
       return state;

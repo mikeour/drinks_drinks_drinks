@@ -1,3 +1,11 @@
+import {
+  UPDATE_DRINK,
+  UPDATE_NEXT_DRINK,
+  UPDATE_PREV_DRINK,
+  SHOW_DRINK_INFO,
+  HIDE_DRINK_INFO
+} from "../actions";
+
 const initialState = {
   drink: {},
   nextDrink: {},
@@ -7,15 +15,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "UPDATE_DRINK":
+    case UPDATE_DRINK:
       return { ...state, drink: action.payload };
-    case "UPDATE_NEXT_DRINK":
+    case UPDATE_NEXT_DRINK:
       return { ...state, nextDrink: action.payload };
-    case "UPDATE_PREV_DRINK":
+    case UPDATE_PREV_DRINK:
       return { ...state, prevDrink: action.payload };
-    case "SHOW_DRINK_INFO":
+    case SHOW_DRINK_INFO:
       return { ...state, showDrinkInfo: true };
-    case "HIDE_DRINK_INFO":
+    case HIDE_DRINK_INFO:
       return { ...state, showDrinkInfo: false };
     default:
       return state;

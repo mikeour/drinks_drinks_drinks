@@ -1,3 +1,18 @@
+import {
+  UPDATE_COCKTAILS,
+  CLEAR_COCKTAILS,
+  TOGGLE_LOADING_ON,
+  TOGGLE_LOADING_OFF,
+  UPDATE_DRINK,
+  UPDATE_NEXT_DRINK,
+  UPDATE_PREV_DRINK,
+  SHOW_DRINK_INFO,
+  HIDE_DRINK_INFO,
+  UPDATE_SEARCH_QUERY,
+  RESET_SEARCH_QUERY,
+  TOGGLE_SIDEBAR
+} from "./actions";
+
 import { useSelector, useDispatch } from "react-redux";
 
 export const useSearchQuery = () => {
@@ -6,11 +21,10 @@ export const useSearchQuery = () => {
 
   return {
     searchQuery,
-    setSearchQuery: payload =>
-      dispatch({ type: "UPDATE_SEARCH_QUERY", payload }),
-    resetSearchQuery: () => dispatch({ type: "RESET_SEARCH_QUERY" }),
+    setSearchQuery: payload => dispatch({ type: UPDATE_SEARCH_QUERY, payload }),
+    resetSearchQuery: () => dispatch({ type: RESET_SEARCH_QUERY }),
     handleChange: e =>
-      dispatch({ type: "UPDATE_SEARCH_QUERY", payload: e.target.value })
+      dispatch({ type: UPDATE_SEARCH_QUERY, payload: e.target.value })
   };
 };
 
@@ -21,10 +35,10 @@ export const useCocktailsList = () => {
   return {
     cocktails,
     loading,
-    setCocktails: payload => dispatch({ type: "UPDATE_COCKTAILS", payload }),
-    clearCocktails: () => dispatch({ type: "CLEAR_COCKTAILS" }),
-    toggleLoadingOn: () => dispatch({ type: "TOGGLE_LOADING_ON" }),
-    toggleLoadingOff: () => dispatch({ type: "TOGGLE_LOADING_OFF" })
+    setCocktails: payload => dispatch({ type: UPDATE_COCKTAILS, payload }),
+    clearCocktails: () => dispatch({ type: CLEAR_COCKTAILS }),
+    toggleLoadingOn: () => dispatch({ type: TOGGLE_LOADING_ON }),
+    toggleLoadingOff: () => dispatch({ type: TOGGLE_LOADING_OFF })
   };
 };
 
@@ -34,7 +48,7 @@ export const useSidebar = () => {
 
   return {
     showSidebar,
-    handleSidebar: e => dispatch({ type: "TOGGLE_SIDEBAR" })
+    handleSidebar: e => dispatch({ type: TOGGLE_SIDEBAR })
   };
 };
 
@@ -49,10 +63,10 @@ export const useDrinkInfo = () => {
     nextDrink,
     prevDrink,
     showDrinkInfo,
-    setDrink: payload => dispatch({ type: "UPDATE_DRINK", payload }),
-    setNextDrink: payload => dispatch({ type: "UPDATE_NEXT_DRINK", payload }),
-    setPrevDrink: payload => dispatch({ type: "UPDATE_PREV_DRINK", payload }),
-    toggleDrinkInfoOn: () => dispatch({ type: "SHOW_DRINK_INFO" }),
-    toggleDrinkInfoOff: () => dispatch({ type: "HIDE_DRINK_INFO" })
+    setDrink: payload => dispatch({ type: UPDATE_DRINK, payload }),
+    setNextDrink: payload => dispatch({ type: UPDATE_NEXT_DRINK, payload }),
+    setPrevDrink: payload => dispatch({ type: UPDATE_PREV_DRINK, payload }),
+    toggleDrinkInfoOn: () => dispatch({ type: SHOW_DRINK_INFO }),
+    toggleDrinkInfoOff: () => dispatch({ type: HIDE_DRINK_INFO })
   };
 };
