@@ -7,16 +7,16 @@ const Footer = () => (
   <footer
     css={css`
       grid-area: footer;
-      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       border-top: 1px solid black;
       background-color: var(--primary);
     `}
   >
     <h6
       css={css`
-        position: absolute;
-        top: 30%;
-        left: 92%;
+        padding: 0.25rem;
       `}
     >
       ©{" "}
