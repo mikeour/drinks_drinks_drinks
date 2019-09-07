@@ -2,12 +2,18 @@ import { css } from "@emotion/core";
 
 export const showLoading = css`
   display: grid;
-  grid-template-areas:
-    "left alphabet alphabet right"
-    "left content content right";
-  grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
-  grid-template-rows: 45px 1fr;
+  grid-template-areas: "alphabet content";
+  grid-template-columns: 1.5fr 11fr;
+  grid-template-rows: 1fr;
   overflow: hidden;
+
+  @media (min-width: 920px) {
+    grid-template-areas:
+      "left alphabet alphabet right"
+      "left content content right";
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+    grid-template-rows: 45px 1fr;
+  }
 `;
 
 export const showDrinkInfoStyles = css`

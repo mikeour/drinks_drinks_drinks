@@ -81,11 +81,16 @@ const Grid = () => {
             )}
             <div
               css={css`
-                grid-area: bottom;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                display: none;
+
+                @media (min-width: 920px) {
+                  display: block;
+                  grid-area: bottom;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
               `}
             >
               <p>Other popular searches:</p>
@@ -105,10 +110,19 @@ const Grid = () => {
             css={css`
               grid-area: alphabet;
               display: flex;
+              border-right: 1px solid black;
+              flex-direction: column;
               align-items: center;
-              justify-content: space-evenly;
+              height: 100%;
               width: 100%;
-              border-bottom: 1px solid black;
+              overflow-y: auto;
+
+              @media (min-width: 920px) {
+                justify-content: space-evenly;
+                flex-direction: row;
+                border-bottom: 1px solid black;
+                border-right: none;
+              }
             `}
           >
             {alphabet.map(char => {
