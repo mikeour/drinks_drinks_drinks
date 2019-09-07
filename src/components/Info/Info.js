@@ -39,6 +39,8 @@ const Info = () => {
           text-align: center;
           align-self: center;
           font-size: 2rem;
+          display: inline-flex;
+          justify-content: space-between;
         `}
         onClick={toggleDrinkInfoOff}
       >
@@ -46,17 +48,16 @@ const Info = () => {
           css={css`
             font-size: 0.75rem;
             padding: 0.4rem;
-            display: inline-block;
           `}
         >
-          <em>Drink name</em>
           <span
             css={css`
               font-size: 2rem;
               padding: 0 2rem;
+              font-weight: bold;
             `}
           >
-            {drink.strDrink}
+            {drink.strDrink.toUpperCase()}
           </span>
         </p>
         <img css={closeStyles} src={Close} onClick={toggleDrinkInfoOff} />
@@ -67,22 +68,15 @@ const Info = () => {
           grid-area: ingredients;
           width: 100%;
           height: 100%;
-          justify-content: center;
-          align-items: center;
-          position: relative;
         `}
       >
         <div
           css={css`
-            position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-            top: 50%;
-            left: 50%;
             height: 60%;
-            width: 80%;
-            transform: translate(-50%, -50%);
+            width: 100%;
           `}
         >
           <div
@@ -223,18 +217,13 @@ const Info = () => {
           grid-area: image;
           height: 100%;
           width: 100%;
-
-          position: relative;
         `}
       >
         <img
           css={css`
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 50%;
+            height: 100%;
+            width: 100%;
+            padding: 0.5rem;
             border-radius: 3%;
           `}
           src={drink.strDrinkThumb}
@@ -247,16 +236,11 @@ const Info = () => {
           width: 100%;
           height: 100%;
           overflow-y: auto;
-          position: relative;
         `}
       >
         <div
           css={css`
-            position: absolute;
             width: 75%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
           `}
         >
           <p
