@@ -1,7 +1,8 @@
 import React from "react";
 import Burger from "../Burger/Burger";
+import { Link } from "react-router-dom";
 import Close from "../../assets/close.svg";
-import { useSearchQuery, useSidebar } from "../../hooks";
+import { useSearchQuery, useSidebar, useDrinkInfo } from "../../hooks";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -10,16 +11,26 @@ import {
   labelStyles,
   inputStyles,
   spanStyles,
-  closeStyles
+  closeStyles,
+  linkStyles
 } from "./styles";
 
 const Nav = () => {
   const { searchQuery, resetSearchQuery, handleChange } = useSearchQuery();
   const { handleSidebar } = useSidebar();
+  const { toggleDrinkInfoOff } = useDrinkInfo();
+
+  const resetSearch = e => {
+    toggleDrinkInfoOff();
+    resetSearchQuery();
+  };
 
   return (
     <nav css={navStyles}>
       <Burger handleSidebar={handleSidebar} />
+      <Link css={linkStyles} onClick={resetSearch} to="/">
+        <strong>Drinks, Drinks, Drinks</strong>
+      </Link>
 
       <label css={labelStyles}>
         <input

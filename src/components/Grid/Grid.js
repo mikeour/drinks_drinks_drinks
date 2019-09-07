@@ -10,8 +10,8 @@ import alphabet from "../../lib/alphabet";
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import {
-  showLoading,
-  hideLoading,
+  showLoadingStyles,
+  hideLoadingStyles,
   showDrinkInfoStyles,
   regularLetterStyles,
   boldLetterStyles,
@@ -44,10 +44,10 @@ const Grid = () => {
     <main
       css={
         cocktails.length <= 0
-          ? hideLoading
+          ? hideLoadingStyles
           : showDrinkInfo
           ? showDrinkInfoStyles
-          : showLoading
+          : showLoadingStyles
       }
     >
       {cocktails.length <= 0 ? (
@@ -107,23 +107,44 @@ const Grid = () => {
           </div>
 
           <div
-            css={css`
-              grid-area: alphabet;
-              display: flex;
-              border-right: 1px solid black;
-              flex-direction: column;
-              align-items: center;
-              height: 100%;
-              width: 100%;
-              overflow-y: auto;
+            css={
+              showDrinkInfo
+                ? css`
+                    grid-area: alphabet;
+                    display: none;
 
-              @media (min-width: 920px) {
-                justify-content: space-evenly;
-                flex-direction: row;
-                border-bottom: 1px solid black;
-                border-right: none;
-              }
-            `}
+                    @media (min-width: 920px) {
+                      display: flex;
+                      border-right: 1px solid black;
+                      flex-direction: column;
+                      align-items: center;
+                      height: 100%;
+                      width: 100%;
+                      overflow-y: auto;
+                      justify-content: space-evenly;
+                      flex-direction: row;
+                      border-bottom: 1px solid black;
+                      border-right: none;
+                    }
+                  `
+                : css`
+                    grid-area: alphabet;
+                    display: flex;
+                    border-right: 1px solid black;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 100%;
+                    width: 100%;
+                    overflow-y: auto;
+
+                    @media (min-width: 920px) {
+                      justify-content: space-evenly;
+                      flex-direction: row;
+                      border-bottom: 1px solid black;
+                      border-right: none;
+                    }
+                  `
+            }
           >
             {alphabet.map(char => {
               const doesExist = firstLetters.includes(char);
@@ -139,16 +160,33 @@ const Grid = () => {
             })}
           </div>
           <div
-            css={css`
-              grid-area: content;
-              display: grid;
-              grid-template-columns: 1fr;
-              grid-template-rows: 1fr;
-              justify-content: center;
-              grid-gap: 15px;
-              overflow-y: scroll;
-              padding: 30px 0;
-            `}
+            css={
+              showDrinkInfo
+                ? css`
+                    display: none;
+
+                    @media (min-width: 920px) {
+                      grid-area: content;
+                      display: grid;
+                      grid-template-columns: 1fr;
+                      grid-template-rows: 1fr;
+                      justify-content: center;
+                      grid-gap: 15px;
+                      overflow-y: scroll;
+                      padding: 30px 0;
+                    }
+                  `
+                : css`
+                    grid-area: content;
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr;
+                    justify-content: center;
+                    grid-gap: 15px;
+                    overflow-y: scroll;
+                    padding: 30px 0;
+                  `
+            }
           >
             {loading ? (
               <Spinner />

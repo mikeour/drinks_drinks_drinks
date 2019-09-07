@@ -1,6 +1,6 @@
 import { css } from "@emotion/core";
 
-export const showLoading = css`
+export const showLoadingStyles = css`
   display: grid;
   grid-template-areas: "alphabet content";
   grid-template-columns: 1.5fr 11fr;
@@ -18,15 +18,21 @@ export const showLoading = css`
 
 export const showDrinkInfoStyles = css`
   display: grid;
-  grid-template-areas:
-    "left alphabet right right"
-    "left content right right";
-  grid-template-columns: 1fr 3.5fr 2fr 2fr;
-  grid-template-rows: 45px 1fr;
-  overflow: hidden;
+  grid-template-areas: "right";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+
+  @media (min-width: 920px) {
+    grid-template-areas:
+      "left alphabet right right"
+      "left content right right";
+    grid-template-columns: 1fr 3.5fr 2fr 2fr;
+    grid-template-rows: 45px 1fr;
+    overflow: hidden;
+  }
 `;
 
-export const hideLoading = css`
+export const hideLoadingStyles = css`
   position: relative;
   text-align: center;
 `;

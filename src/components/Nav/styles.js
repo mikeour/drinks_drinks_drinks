@@ -2,19 +2,28 @@ import { css } from "@emotion/core";
 
 export const navStyles = css`
   grid-area: nav;
-  display: flex;
+  display: grid;
+  grid-template-areas: "search";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid black;
-
   padding: 1rem 3rem;
   background-color: var(--primary);
+
+  @media (min-width: 550px) {
+    grid-template-areas: "burger logo empty search";
+    grid-template-columns: 1fr 7fr 7fr 7fr;
+  }
 `;
 
 export const labelStyles = css`
+  grid-area: search;
   position: relative;
   display: inline-flex;
-  width: 25%;
+  justify-content: center;
+  /* width: 25%; */
   margin-right: 2%;
 `;
 
@@ -85,6 +94,23 @@ export const closeStyles = css`
     }
     to {
       transform: rotate(360deg);
+    }
+  }
+`;
+
+export const linkStyles = css`
+  display: none;
+
+  @media (min-width: 550px) {
+    grid-area: logo;
+    display: block;
+    text-align: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: black;
+
+    :visited {
+      color: black;
     }
   }
 `;
