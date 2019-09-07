@@ -12,9 +12,9 @@ export const navStyles = css`
   padding: 1rem 3rem;
   background-color: var(--primary);
 
-  @media (min-width: 550px) {
+  @media (min-width: 700px) {
     grid-template-areas: "burger logo empty search";
-    grid-template-columns: 1fr 7fr 7fr 7fr;
+    grid-template-columns: 2fr 7fr 7fr 7fr;
   }
 `;
 
@@ -101,10 +101,9 @@ export const closeStyles = css`
 export const linkStyles = css`
   display: none;
 
-  @media (min-width: 550px) {
+  @media (min-width: 700px) {
     grid-area: logo;
     display: block;
-    text-align: center;
     font-size: 1.4rem;
     text-decoration: none;
     color: black;

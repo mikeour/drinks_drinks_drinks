@@ -12,7 +12,7 @@ export const showLoadingStyles = css`
       "left alphabet alphabet right"
       "left content content right";
     grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
-    grid-template-rows: 45px 1fr;
+    grid-template-rows: 3rem 1fr;
   }
 `;
 
