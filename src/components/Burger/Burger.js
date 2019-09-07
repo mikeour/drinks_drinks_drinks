@@ -1,18 +1,20 @@
 import React from "react";
-import { useSidebar, useSearchQuery, useDrinkInfo } from "../../hooks";
+import { useSidebar } from "../../hooks";
 
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
-import { burgerStyles, buttonStyles, linkStyles } from "./styles";
+import { jsx } from "@emotion/core";
+import { buttonStyles, burgerStyles, pattyStyles } from "./styles";
 
 const Burger = () => {
   const { handleSidebar } = useSidebar();
 
   return (
-    <div css={buttonStyles} onClick={handleSidebar}>
-      <div css={burgerStyles} />
-      <div css={burgerStyles} />
-      <div css={burgerStyles} />
+    <div css={buttonStyles}>
+      <div css={burgerStyles} onClick={handleSidebar}>
+        <div css={pattyStyles} />
+        <div css={pattyStyles} />
+        <div css={pattyStyles} />
+      </div>
     </div>
   );
 };

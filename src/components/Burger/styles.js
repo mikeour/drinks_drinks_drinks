@@ -3,7 +3,7 @@ import { css } from "@emotion/core";
 export const buttonStyles = css`
   display: none;
 
-  @media (min-width: 550px) {
+  @media (min-width: 700px) {
     grid-area: burger;
     display: inline-flex;
     flex-direction: column;
@@ -13,12 +13,17 @@ export const buttonStyles = css`
 
     :hover {
       opacity: 1;
-      /* transform: scale(1.085, 1.085); */
     }
   }
 `;
 
 export const burgerStyles = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
+
+export const pattyStyles = css`
   width: 19px;
   height: 3px;
   background-color: black;
