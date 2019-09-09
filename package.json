@@ -7,7 +7,7 @@
     "clean": "rm -r dist",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.16",
     "@emotion/styled": "^10.0.15",
+    "jest-fetch-mock": "^2.1.2",
     "parcel-bundler": "^1.12.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -26,15 +27,34 @@
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
     "babel-jest": "^24.9.0",
+    "fetch-mock": "^7.3.9",
     "jest": "^24.9.0",
-    "jest-axe": "^3.2.0"
+    "jest-axe": "^3.2.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    },
+    "collectCoverageFrom": [
+      "src/components/**/*.js",
+      "!src/components/**/styles.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "html",
+      "text"
+    ]
   }
 }
