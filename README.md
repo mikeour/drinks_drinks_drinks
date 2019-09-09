@@ -1,10 +1,16 @@
-# Drinks, Drinks, Drinks
+# 🍹 _*Drinks, Drinks, Drinks*_ 🍹
 
 [![buddy pipeline](https://app.buddy.works/michaeljroeslein/drinks-drinks-drinks/pipelines/pipeline/206084/badge.svg?token=7d73f9cc2943069fefebda36433fea85b22c5d84c43fe492687560a85105e7dd "buddy pipeline")](https://app.buddy.works/michaeljroeslein/drinks-drinks-drinks/pipelines/pipeline/206084)
 
-This web application utilizes React, React-Router, Redux, and Emotion to allows users to search the CocktailDB for cocktail recipes.
+This web application utilizes **React**, **React-Router,** **Redux**, and **Emotion** to allows users to search the CocktailDB for fun cocktail recipes
+
+You can visit it right now at [drinksdrinksdrinks.info](https://drinksdrinksdrinks.info).
 
 ![Example Usage](https://thumbs.gfycat.com/AnxiousGrouchyGermanpinscher-size_restricted.gif)
+
+<br>
+
+---
 
 ## Technologies Used
 
@@ -26,6 +32,8 @@ This web application utilizes React, React-Router, Redux, and Emotion to allows 
 
 - [Jest](https://jestjs.io/en/)
 - [React Testing Library](https://github.com/testing-library/react-testing-library)
+
+---
 
 ## Quickstart
 
