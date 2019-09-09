@@ -11,7 +11,7 @@ You can visit it right now at [drinksdrinksdrinks.info](https://drinksdrinksdrin
 
 # Technologies Used
 
-## Frontend
+### Frontend
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
