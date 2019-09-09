@@ -23,6 +23,7 @@ const Footer = () => (
       ©{" "}
       <a
         href="https://www.github.com/mikeour"
+        rel="noopener"
         target="_blank"
         css={css`
           text-decoration: none;
