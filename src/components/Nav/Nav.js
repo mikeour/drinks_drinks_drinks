@@ -38,6 +38,7 @@ const Nav = () => {
           placeholder=" "
           value={searchQuery}
           onChange={handleChange}
+          data-testid="search"
         />
         <span css={spanStyles}>Search for ingredients here...</span>
         {searchQuery.length > 0 && (

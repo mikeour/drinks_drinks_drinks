@@ -45,7 +45,10 @@ const App = () => {
   }, [searchQuery]);
 
   return (
-    <div css={showSidebar ? showSidebarStyles : hideSidebarStyles}>
+    <div
+      css={showSidebar ? showSidebarStyles : hideSidebarStyles}
+      data-testid="application"
+    >
       <Global styles={globalStyles} />
       <Sidebar />
       <Nav />

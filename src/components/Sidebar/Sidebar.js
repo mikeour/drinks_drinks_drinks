@@ -11,7 +11,7 @@ const Sidebar = () => {
   const { resetSearchQuery } = useSearchQuery();
 
   return (
-    <Aside showSidebar={showSidebar}>
+    <Aside data-testid="sidebar" showSidebar={showSidebar}>
       <Link onClick={resetSearchQuery} css={linkStyles} to="/">
         Home
       </Link>

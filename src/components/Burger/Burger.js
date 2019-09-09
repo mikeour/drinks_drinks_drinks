@@ -10,7 +10,7 @@ const Burger = () => {
 
   return (
     <div css={buttonStyles}>
-      <div css={burgerStyles} onClick={handleSidebar}>
+      <div css={burgerStyles} onClick={handleSidebar} data-testid="burger">
         <div css={pattyStyles} />
         <div css={pattyStyles} />
         <div css={pattyStyles} />
