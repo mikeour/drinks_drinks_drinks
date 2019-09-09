@@ -21,7 +21,12 @@ const CenterImage = () => {
   const memoIngredient3 = useMemo(() => <Suggestion />, []);
   return (
     <div>
-      <img css={centerImageStyles} className="animated shake" src={image} />
+      <img
+        css={centerImageStyles}
+        className="animated shake"
+        src={image}
+        alt="Shaking image of a cocktail"
+      />
       <h3
         css={css`
           padding: 25px;
