@@ -23,7 +23,7 @@ You can visit it right now at [drinksdrinksdrinks.info](https://drinksdrinksdrin
 - [AWS S3](https://aws.amazon.com/s3/)
 - [AWS Cloudflare](https://aws.amazon.com/cloudfront/)
 - [AWS Route 53](https://aws.amazon.com/route53/)
-- [Buddy.Works](https://buddy.works/)
+- [Buddy](https://buddy.works/)
 
 ### Testing
 
