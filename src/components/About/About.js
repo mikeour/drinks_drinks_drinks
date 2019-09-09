@@ -5,7 +5,7 @@ import { jsx } from "@emotion/core";
 import { aboutStyles } from "./styles";
 
 const About = () => (
-  <div css={aboutStyles}>
+  <div css={aboutStyles} data-testid="about">
     <h1>About Drinks, Drinks, Drinks</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, ipsa

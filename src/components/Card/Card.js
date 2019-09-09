@@ -24,7 +24,7 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
   }, []);
 
   return (
-    <div css={cardStyles} onClick={handleClick}>
+    <div css={cardStyles} onClick={handleClick} data-testid="card">
       <div css={drinkNameStyles}>
         <p
           css={css`

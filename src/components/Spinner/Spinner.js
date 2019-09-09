@@ -13,6 +13,7 @@ const Spinner = () => {
         left: 50%;
         transform: translate(-50%, -50%);
       `}
+      data-testid="spinner"
     >
       <div className="la-line-spin-clockwise-fade la-dark la-2x">
         <div></div>
