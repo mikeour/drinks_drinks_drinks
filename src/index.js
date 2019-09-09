@@ -5,14 +5,13 @@ import { Provider } from "react-redux";
 import store from "./store";
 import App from "./components/App/App";
 
-const mountNode = document.getElementById("root");
-
-render(
+const Application = () => (
   <Provider store={store}>
     <Router>
       <App />
     </Router>
-  </Provider>,
-
-  mountNode
+  </Provider>
 );
+const mountNode = document.getElementById("root");
+
+render(<Application />, mountNode);
