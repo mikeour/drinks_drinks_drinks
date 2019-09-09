@@ -14,9 +14,10 @@ const Footer = () => (
       background-color: var(--primary);
     `}
   >
-    <h6
+    <p
       css={css`
         padding: 0.25rem;
+        font-size: 0.75rem;
       `}
     >
       ©{" "}
@@ -35,7 +36,7 @@ const Footer = () => (
         mikeour
       </a>
       , 2019
-    </h6>
+    </p>
   </footer>
 );
 
