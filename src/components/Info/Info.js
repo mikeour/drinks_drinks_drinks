@@ -32,7 +32,7 @@ const Info = () => {
   const { drink, toggleDrinkInfoOff } = useDrinkInfo();
 
   return (
-    <div css={mainInfoStyles}>
+    <div css={mainInfoStyles} data-testid="info">
       <div
         css={css`
           grid-area: name;
@@ -60,7 +60,12 @@ const Info = () => {
             {drink.strDrink.toUpperCase()}
           </span>
         </p>
-        <img css={closeStyles} src={Close} onClick={toggleDrinkInfoOff} />
+        <img
+          css={closeStyles}
+          src={Close}
+          onClick={toggleDrinkInfoOff}
+          data-testid="close"
+        />
       </div>
 
       <div
