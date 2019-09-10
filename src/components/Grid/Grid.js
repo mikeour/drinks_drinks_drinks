@@ -7,6 +7,10 @@ import Spinner from "../Spinner/Spinner";
 import { useCocktailsList, useDrinkInfo } from "../../hooks";
 import alphabet from "../../lib/alphabet";
 
+/* Smooth scrolling polyfill for browser-support */
+import smoothscroll from "smoothscroll-polyfill";
+smoothscroll.polyfill();
+
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import {
