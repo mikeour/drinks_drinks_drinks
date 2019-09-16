@@ -24,8 +24,8 @@ const Suggestion = () => {
   };
 
   return (
-    <span onClick={reset} data-testid="suggestion">
-      <strong css={linkStyles}>{ingredient}</strong>
+    <span css={linkStyles} onClick={reset} data-testid="suggestion">
+      {ingredient}
     </span>
   );
 };

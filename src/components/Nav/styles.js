@@ -9,7 +9,7 @@ export const navStyles = css`
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid black;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 1rem 1rem;
   background-color: var(--primary);
 
   @media (min-width: 700px) {

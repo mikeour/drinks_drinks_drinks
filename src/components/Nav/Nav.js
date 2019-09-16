@@ -29,7 +29,7 @@ const Nav = () => {
     <nav css={navStyles}>
       <Burger handleSidebar={handleSidebar} />
       <Link css={linkStyles} onClick={resetSearch} to="/">
-        <strong>Drinks, Drinks, Drinks</strong>
+        <p>Drinks, Drinks, Drinks</p>
       </Link>
 
       <label css={labelStyles}>
