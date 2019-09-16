@@ -20,25 +20,37 @@ const CenterImage = () => {
   const memoIngredient2 = useMemo(() => <Suggestion />, []);
   const memoIngredient3 = useMemo(() => <Suggestion />, []);
   return (
-    <div>
+    <div
+      css={css`
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      `}
+    >
       <img
         css={centerImageStyles}
         className="animated shake"
         src={image}
         alt="Shaking image of a cocktail"
       />
-      <h3
+      <p
         css={css`
           padding: 25px;
         `}
       >
-        <em>Need some inspiration? </em>
-        <br />
-        <br />
+        <em
+          css={css`
+            display: block;
+            padding: 0.4rem;
+            line-height: 3;
+          `}
+        >
+          Need some inspiration?{" "}
+        </em>
         Try searching for {memoIngredient1}, {memoIngredient2}, or maybe even{" "}
-        {"  "}
         {memoIngredient3} ...
-      </h3>
+      </p>
     </div>
   );
 };
