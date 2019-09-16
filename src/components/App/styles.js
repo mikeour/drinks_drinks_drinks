@@ -1,7 +1,7 @@
 import { css } from "@emotion/core";
 
 export const globalStyles = css`
-  @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap");
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
 
   html {
     scroll-behavior: smooth;
