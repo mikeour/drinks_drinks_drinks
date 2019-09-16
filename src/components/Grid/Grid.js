@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Cocktails from "../Cocktails/Cocktails";
-import CenterImage from "../CenterImage/CenterImage";
+import Welcome from "../Welcome/Welcome";
 import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
 import Spinner from "../Spinner/Spinner";
@@ -51,7 +51,7 @@ const Grid = () => {
       }
     >
       {cocktails.length <= 0 ? (
-        <CenterImage />
+        <Welcome />
       ) : (
         <>
           <div
