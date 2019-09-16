@@ -15,6 +15,12 @@ const Sidebar = () => {
       <Link onClick={resetSearchQuery} css={linkStyles} to="/">
         Home
       </Link>
+      <Link onClick={resetSearchQuery} css={linkStyles} to="/login">
+        Login
+      </Link>
+      <Link onClick={resetSearchQuery} css={linkStyles} to="/signup">
+        Signup
+      </Link>
       <Link css={linkStyles} to="/about">
         About
       </Link>
