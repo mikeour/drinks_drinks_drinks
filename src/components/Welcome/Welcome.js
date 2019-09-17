@@ -60,7 +60,7 @@ const Welcome = () => {
               padding: 1rem 2rem;
             `}
           >
-            Welcome to Drinks, Drinks, Drinks
+            Welcome to <em>Drinks, Drinks, Drinks</em>
           </h1>
           <p
             css={css`
