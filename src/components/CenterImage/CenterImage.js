@@ -28,6 +28,15 @@ const CenterImage = () => {
         transform: translate(-50%, -50%);
       `}
     >
+      <em
+        css={css`
+          display: block;
+          padding: 0.4rem;
+          line-height: 3;
+        `}
+      >
+        Need some inspiration?{" "}
+      </em>
       <img
         css={centerImageStyles}
         className="animated shake"
@@ -39,15 +48,6 @@ const CenterImage = () => {
           padding: 25px;
         `}
       >
-        <em
-          css={css`
-            display: block;
-            padding: 0.4rem;
-            line-height: 3;
-          `}
-        >
-          Need some inspiration?{" "}
-        </em>
         Try searching for {memoIngredient1}, {memoIngredient2}, or maybe even{" "}
         {memoIngredient3} ...
       </p>
