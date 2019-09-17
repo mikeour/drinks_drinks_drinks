@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { useSearchQuery, useCocktailsList, useSidebar } from "../../hooks";
+import {
+  useSearchQuery,
+  useCocktailsList,
+  useSidebar,
+  useFirebase
+} from "../../hooks";
 import Nav from "../Nav/Nav";
 import Grid from "../Grid/Grid";
 import Login from "../Login/Login";
@@ -23,6 +28,16 @@ const App = () => {
     toggleLoadingOn
   } = useCocktailsList();
   const { showSidebar } = useSidebar();
+  const { getUsers } = useFirebase();
+
+  useEffect(() => {
+    const asyncGrab = async () => {
+      const data = await getUsers();
+      console.log("Found the data", data);
+    };
+
+    asyncGrab();
+  }, []);
 
   useEffect(() => {
     if (searchQuery !== "") {

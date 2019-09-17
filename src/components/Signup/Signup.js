@@ -1,5 +1,5 @@
-import React from "react";
-import { useSearchQuery } from "../../hooks";
+import React, { useState } from "react";
+import { useSearchQuery, useFirebase } from "../../hooks";
 import { Redirect, Link } from "react-router-dom";
 import SigninIcon from "../../assets/signin-icon.png";
 
@@ -8,10 +8,21 @@ import { css, jsx } from "@emotion/core";
 
 const Signup = () => {
   const { searchQuery } = useSearchQuery();
+  const { addUser, getUsers } = useFirebase();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (func, value) => func(value);
+  const handleSubmit = e => {
+    e.preventDefault();
+    addUser({ name, email, password });
+  };
 
   if (searchQuery.length > 0) {
     return <Redirect to="/"></Redirect>;
   }
+
   return (
     <div
       css={css`
@@ -49,7 +60,7 @@ const Signup = () => {
               padding: 1rem 2rem;
             `}
           >
-            Signup now to save your favorite cocktails!
+            Signup now to get started!
           </h1>
           <p
             css={css`
@@ -116,7 +127,7 @@ const Signup = () => {
             padding: 2rem 3rem;
             background: white;
           `}
-          onClick={e => e.preventDefault()}
+          onClick={handleSubmit}
         >
           <div
             css={css`
@@ -154,6 +165,8 @@ const Signup = () => {
             `}
             type="text"
             placeholder="Enter Full Name"
+            name="name"
+            onChange={e => handleChange(setName, e.target.value)}
           ></input>
           <input
             css={css`
@@ -163,6 +176,8 @@ const Signup = () => {
             `}
             type="text"
             placeholder="Enter Email"
+            name="email"
+            onChange={e => handleChange(setEmail, e.target.value)}
           ></input>
           <input
             css={css`
@@ -172,6 +187,8 @@ const Signup = () => {
             `}
             type="password"
             placeholder="Enter Password"
+            name="password"
+            onChange={e => handleChange(setPassword, e.target.value)}
           ></input>
           <input
             css={css`
