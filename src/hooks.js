@@ -14,7 +14,7 @@ import {
 } from "./actions";
 
 import { useSelector, useDispatch } from "react-redux";
-import { db } from "./firebase";
+// import { db } from "./firebase";
 
 export const useSearchQuery = () => {
   const dispatch = useDispatch();

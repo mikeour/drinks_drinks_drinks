@@ -3,8 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import {
   useSearchQuery,
   useCocktailsList,
-  useSidebar,
-  useFirebase
+  useSidebar
 } from "../../hooks";
 import Nav from "../Nav/Nav";
 import Grid from "../Grid/Grid";
@@ -28,16 +27,6 @@ const App = () => {
     toggleLoadingOn
   } = useCocktailsList();
   const { showSidebar } = useSidebar();
-  const { getUsers } = useFirebase();
-
-  useEffect(() => {
-    const asyncGrab = async () => {
-      const data = await getUsers();
-      console.log("Found the data", data);
-    };
-
-    asyncGrab();
-  }, []);
 
   useEffect(() => {
     if (searchQuery !== "") {
