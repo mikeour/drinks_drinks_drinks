@@ -14,7 +14,6 @@ import {
 } from "./actions";
 
 import { useSelector, useDispatch } from "react-redux";
-// import { db } from "./firebase";
 
 export const useSearchQuery = () => {
   const dispatch = useDispatch();
@@ -69,25 +68,5 @@ export const useDrinkInfo = () => {
     setPrevDrink: payload => dispatch({ type: UPDATE_PREV_DRINK, payload }),
     toggleDrinkInfoOn: () => dispatch({ type: SHOW_DRINK_INFO }),
     toggleDrinkInfoOff: () => dispatch({ type: HIDE_DRINK_INFO })
-  };
-};
-
-export const useFirebase = () => {
-  return {
-    addUser: async ({ name, email, password }) => {
-      const documents = await db.collection("users").doc(name);
-      await documents.set({
-        name,
-        email,
-        password,
-        favorites: []
-      });
-      return;
-    },
-    getUsers: async () => {
-      const usersRaw = await db.collection("users").get();
-      const users = usersRaw.docs.map(doc => doc.data());
-      return users;
-    }
   };
 };
