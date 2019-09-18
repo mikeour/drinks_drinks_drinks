@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSearchQuery, useFirebase } from "../../hooks";
+import { useSearchQuery } from "../../hooks";
 import { Redirect, Link } from "react-router-dom";
 import SigninIcon from "../../assets/signin-icon.png";
 
@@ -8,7 +8,6 @@ import { css, jsx } from "@emotion/core";
 
 const Signup = () => {
   const { searchQuery } = useSearchQuery();
-  const { addUser, getUsers } = useFirebase();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +15,6 @@ const Signup = () => {
   const handleChange = (func, value) => func(value);
   const handleSubmit = e => {
     e.preventDefault();
-    addUser({ name, email, password });
   };
 
   if (searchQuery.length > 0) {
@@ -77,7 +75,7 @@ const Signup = () => {
               line-height: 1.7;
             `}
           >
-            (Already signed up?{" "}
+            (Already signed up? Head over to our{" "}
             <Link
               css={css`
                 color: black;
@@ -88,9 +86,9 @@ const Signup = () => {
               `}
               to="/login"
             >
-              Login here
-            </Link>
-            ).{" "}
+              login
+            </Link>{" "}
+            page. )
           </p>
         </div>
       </div>

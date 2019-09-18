@@ -69,7 +69,7 @@ const Login = () => {
               padding: 1rem 2rem;
             `}
           >
-            (Still need to sign up? Do not fret. You can do that{" "}
+            (Still need to sign up? Do not fret. Head to our{" "}
             <Link
               css={css`
                 color: black;
@@ -81,9 +81,9 @@ const Login = () => {
               `}
               to="/signup"
             >
-              here
-            </Link>
-            ).
+              signup
+            </Link>{" "}
+            page. ).
           </p>
         </div>
       </div>

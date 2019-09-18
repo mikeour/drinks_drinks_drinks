@@ -77,8 +77,7 @@ const Welcome = () => {
               line-height: 1.7;
             `}
           >
-            Find a drink you want to remember? Let us do it for you. Create a
-            free account{" "}
+            Find a drink you want to remember? Let us do it for you.{" "}
             <Link
               css={css`
                 color: black;
@@ -90,7 +89,7 @@ const Welcome = () => {
               `}
               to="/signup"
             >
-              here
+              Create a free account
             </Link>
             .
           </p>
