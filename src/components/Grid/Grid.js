@@ -174,6 +174,7 @@ const Grid = () => {
                       grid-gap: 15px;
                       overflow-y: scroll;
                       padding: 30px 0;
+                      position: relative;
                     }
                   `
                 : css`
@@ -185,6 +186,7 @@ const Grid = () => {
                     grid-gap: 15px;
                     overflow-y: scroll;
                     padding: 30px 0;
+                    position: relative;
                   `
             }
           >
