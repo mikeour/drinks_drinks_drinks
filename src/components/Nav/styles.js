@@ -72,20 +72,15 @@ export const spanStyles = css`
 
 export const closeStyles = css`
   padding-left: 5px;
-  width: 20px;
-  height: 20px;
-  opacity: 0.6;
+  width: 8%;
+  height: 8%;
   animation: spin;
   animation-duration: 1s;
   animation-iteration-count: 1;
 
   :hover {
-    opacity: 0.9;
     transition: 1s;
-    width: 22px;
-    height: 22px;
     padding-left: 7px;
-    transform: scale(1.1, 1.1);
   }
 
   @keyframes spin {

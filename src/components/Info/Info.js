@@ -1,6 +1,6 @@
 import React from "react";
 import { useDrinkInfo, useSearchQuery } from "../../hooks";
-import Close from "../../assets/close.svg";
+import CloseIcon from "../../assets/close.png";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -62,7 +62,7 @@ const Info = () => {
         </p>
         <img
           css={closeStyles}
-          src={Close}
+          src={CloseIcon}
           onClick={toggleDrinkInfoOff}
           data-testid="close"
         />

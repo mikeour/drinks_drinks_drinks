@@ -1,7 +1,7 @@
 import React from "react";
 import Burger from "../Burger/Burger";
 import { Link } from "react-router-dom";
-import Close from "../../assets/close.svg";
+import CloseIcon from "../../assets/close.png";
 import { useSearchQuery, useSidebar, useDrinkInfo } from "../../hooks";
 
 /** @jsx jsx */
@@ -42,7 +42,7 @@ const Nav = () => {
         />
         <span css={spanStyles}>Search for ingredients here...</span>
         {searchQuery.length > 0 && (
-          <img css={closeStyles} src={Close} onClick={resetSearchQuery} />
+          <img css={closeStyles} src={CloseIcon} onClick={resetSearchQuery} />
         )}
       </label>
     </nav>
