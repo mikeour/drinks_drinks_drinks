@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import ShakerIcon from "../../assets/shaker.png";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -15,15 +15,12 @@ const Spinner = () => {
       `}
       data-testid="spinner"
     >
-      <div className="la-line-spin-clockwise-fade la-dark la-2x">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div
+        css={css`
+          padding: 5rem;
+        `}
+      >
+        <img src={ShakerIcon} className="animated shake infinite slow"></img>
       </div>
     </div>
   );
