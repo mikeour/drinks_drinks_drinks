@@ -92,12 +92,15 @@ const Signup = () => {
         >
           <div
             css={css`
-              padding: 2rem;
-              @media (min-width: 800px) {
+              @media (min-width: 700px) {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+              }
+
+              @media (max-width: 700px) {
+                padding: 2rem;
               }
             `}
           >
