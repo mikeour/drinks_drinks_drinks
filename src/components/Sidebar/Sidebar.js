@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSidebar, useSearchQuery } from "../../hooks";
 
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 import { linkStyles, Aside } from "./styles";
 
 const Sidebar = () => {
