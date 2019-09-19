@@ -6,8 +6,7 @@
   "scripts": {
     "clean": "rm -r dist",
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html",
-    "test": "jest --coverage"
+    "build": "parcel build src/index.html"
   },
   "keywords": [],
   "author": "",
