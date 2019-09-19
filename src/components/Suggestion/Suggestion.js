@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useSearchQuery, useDrinkInfo } from "../../hooks";
-import ingredients from "../../lib/ingredients";
+import ingredients from "../../utils/ingredients";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
