@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import {
-  useSearchQuery,
-  useCocktailsList,
-  useSidebar
-} from "../../hooks";
+import { useSearchQuery, useCocktailsList, useSidebar } from "../../hooks";
 import Nav from "../Nav/Nav";
 import Grid from "../Grid/Grid";
 import Login from "../Login/Login";

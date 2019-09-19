@@ -1,7 +1,7 @@
 import { css } from "@emotion/core";
 
 export const globalStyles = css`
-  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+  @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Montserrat:400,700&display=swap");
 
   html {
     scroll-behavior: smooth;
@@ -11,12 +11,14 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--primary-font);
   }
 
   :root {
     --primary: honeydew;
     --secondary: white;
+    --primary-font: "Montserrat", sans-serif;
+    --secondary-font: "Montserrat", sans-serif;
   }
 `;
 
