@@ -5,7 +5,7 @@ import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
 import Spinner from "../Spinner/Spinner";
 import { useCocktailsList, useDrinkInfo } from "../../hooks";
-import alphabet from "../../lib/alphabet";
+import alphabet from "../../utils/alphabet";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
