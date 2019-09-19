@@ -4,7 +4,7 @@ export const aboutStyles = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   background: blanchedalmond;
   padding: 10%;
 `;
