@@ -53,14 +53,17 @@ const Signup = () => {
           !isModalShowing
             ? css`
                 display: grid;
-                grid-template-areas: "info login";
-                grid-template-columns: 1.25fr 1fr;
-                grid-template-rows: 1fr;
+                grid-template-areas:
+                  "info"
+                  "login";
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 2fr;
                 overflow-y: auto;
 
-                @media (max-width: 800px) {
-                  display: flex;
-                  flex-direction: column;
+                @media (min-width: 800px) {
+                  grid-template-areas: "info login";
+                  grid-template-columns: 1.25fr 1fr;
+                  grid-template-rows: 1fr;
                 }
               `
             : css`
@@ -176,7 +179,6 @@ const Signup = () => {
                 "password"
                 "repeat"
                 "create";
-
               grid-template-columns: 1fr;
               grid-template-rows: 2fr repeat(5, minmax(55px, 1fr));
               grid-gap: 1rem;

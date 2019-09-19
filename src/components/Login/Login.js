@@ -63,19 +63,16 @@ const Login = () => {
               `
             : css`
                 display: grid;
-                grid-template-areas:
-                  "info"
-                  "login";
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 2fr;
+                grid-template-areas: "info login";
+                grid-template-columns: 1.25fr 1fr;
+                grid-template-rows: 1fr;
                 overflow-y: auto;
                 transition: filter 500ms linear;
                 filter: blur(3px);
 
-                @media (min-width: 800px) {
-                  grid-template-areas: "info login";
-                  grid-template-columns: 1.25fr 1fr;
-                  grid-template-rows: 1fr;
+                @media (max-width: 800px) {
+                  display: flex;
+                  flex-direction: column;
                   transition: filter 500ms linear;
                   filter: blur(3px);
                 }
