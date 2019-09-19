@@ -2,10 +2,11 @@ import React from "react";
 import Burger from "../Burger/Burger";
 import { Link } from "react-router-dom";
 import CloseIcon from "../../assets/close.png";
+import HomeIcon from "../../assets/home.png";
 import { useSearchQuery, useSidebar, useDrinkInfo } from "../../hooks";
 
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 import {
   navStyles,
   labelStyles,
@@ -28,6 +29,26 @@ const Nav = () => {
   return (
     <nav css={navStyles}>
       <Burger handleSidebar={handleSidebar} />
+      <Link
+        css={css`
+          grid-area: home;
+          justify-content: center;
+          text-align: center;
+
+          @media (min-width: 700px) {
+            display: none;
+          }
+        `}
+        to="/"
+      >
+        <img
+          css={css`
+            height: 30%;
+            width: 30%;
+          `}
+          src={HomeIcon}
+        ></img>
+      </Link>
       <Link css={linkStyles} onClick={resetSearch} to="/">
         <p>Drinks, Drinks, Drinks</p>
       </Link>

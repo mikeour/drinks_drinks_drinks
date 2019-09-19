@@ -3,18 +3,22 @@ import { css } from "@emotion/core";
 export const navStyles = css`
   grid-area: nav;
   display: grid;
-  grid-template-areas: "search";
-  grid-template-columns: 1fr;
+  grid-template-areas: "home search";
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid black;
-  padding: 1rem 3rem 1rem 1rem;
+  padding: 1rem;
   background-color: var(--primary);
 
   @media (min-width: 700px) {
+    padding: 1rem 3rem 1rem 1rem;
     grid-template-areas: "burger logo empty search";
-    grid-template-columns: 2fr 7fr 7fr 7fr;
+    grid-template-columns: minmax(45px, 2fr) minmax(245px, 7fr) 7fr minmax(
+        405px,
+        7fr
+      );
   }
 `;
 
@@ -80,7 +84,6 @@ export const closeStyles = css`
 
   :hover {
     transition: 1s;
-    padding-left: 7px;
   }
 
   @keyframes spin {
