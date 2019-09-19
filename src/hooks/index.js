@@ -1,3 +1,5 @@
+import { useSelector, useDispatch } from "react-redux";
+
 import {
   UPDATE_COCKTAILS,
   CLEAR_COCKTAILS,
@@ -10,10 +12,10 @@ import {
   HIDE_DRINK_INFO,
   UPDATE_SEARCH_QUERY,
   RESET_SEARCH_QUERY,
-  TOGGLE_SIDEBAR
-} from "./actions";
-
-import { useSelector, useDispatch } from "react-redux";
+  TOGGLE_SIDEBAR,
+  SHOW_MODAL,
+  HIDE_MODAL
+} from "../actions/";
 
 export const useSearchQuery = () => {
   const dispatch = useDispatch();
@@ -68,5 +70,16 @@ export const useDrinkInfo = () => {
     setPrevDrink: payload => dispatch({ type: UPDATE_PREV_DRINK, payload }),
     toggleDrinkInfoOn: () => dispatch({ type: SHOW_DRINK_INFO }),
     toggleDrinkInfoOff: () => dispatch({ type: HIDE_DRINK_INFO })
+  };
+};
+
+export const useModal = () => {
+  const dispatch = useDispatch();
+  const { isModalShowing } = useSelector(state => state.modal);
+
+  return {
+    isModalShowing,
+    showModal: () => dispatch({ type: SHOW_MODAL }),
+    hideModal: () => dispatch({ type: HIDE_MODAL })
   };
 };

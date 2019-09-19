@@ -5,7 +5,7 @@ import { createMemoryHistory } from "history";
 import Sidebar from "../src/components/Sidebar/Sidebar";
 import "@testing-library/jest-dom/extend-expect";
 
-jest.mock("../src/hooks.js", () => ({
+jest.mock("../src/hooks/index.js", () => ({
   useSidebar: jest.fn(() => ({
     showSidebar: jest.fn()
   })),

@@ -4,7 +4,7 @@ import Suggestion from "../src/components/Suggestion/Suggestion";
 
 beforeEach(cleanup);
 
-jest.mock("../src/hooks.js", () => ({
+jest.mock("../src/hooks/index.js", () => ({
   useDrinkInfo: jest.fn(() => ({
     toggleDrinkInfoOff: jest.fn()
   })),
