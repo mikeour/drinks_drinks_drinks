@@ -40,27 +40,29 @@ const Welcome = () => {
       >
         <div
           css={css`
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            @media (max-width: 700px) {
+            padding: 2rem;
+            @media (min-width: 700px) {
               position: absolute;
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
-              width: 100%;
-              height: 100%;
-              padding: 1rem 2rem;
             }
           `}
         >
           <h1
             css={css`
               padding: 1rem 2rem;
+              font-family: var(--secondary-font);
             `}
           >
-            Welcome to <em>Drinks, Drinks, Drinks</em>
+            Welcome to{" "}
+            <em
+              css={css`
+                font-family: inherit;
+              `}
+            >
+              Drinks, Drinks, Drinks
+            </em>
           </h1>
           <p
             css={css`
@@ -77,7 +79,15 @@ const Welcome = () => {
               line-height: 1.7;
             `}
           >
-            Find a drink you want to remember? Let us do it for you.{" "}
+            <em
+              css={css`
+                display: block;
+                padding: 0.4rem 0;
+              `}
+            >
+              Find a drink you want to remember?
+            </em>{" "}
+            Let us do it for you.{" "}
             <Link
               css={css`
                 color: black;
