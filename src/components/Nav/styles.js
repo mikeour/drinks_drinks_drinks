@@ -17,7 +17,7 @@ export const navStyles = css`
     grid-template-areas: "burger logo empty search";
     grid-template-columns: minmax(45px, 2fr) minmax(245px, 7fr) 7fr minmax(
         405px,
-        7fr
+        5fr
       );
   }
 `;
