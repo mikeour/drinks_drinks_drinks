@@ -9,6 +9,7 @@ import About from "../About/About";
 import Drink from "../Drink/Drink";
 import Footer from "../Footer/Footer";
 import Sidebar from "../Sidebar/Sidebar";
+import Forgot from "../Forgot/Forgot";
 
 /** @jsx jsx */
 import { Global, jsx } from "@emotion/core";
@@ -63,6 +64,7 @@ const App = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/about" component={About} />
+        <Route path="/forgot" component={Forgot} />
       </Switch>
       <Footer />
     </div>

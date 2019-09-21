@@ -12,11 +12,14 @@ export const globalStyles = css`
     padding: 0;
     box-sizing: border-box;
     font-family: var(--primary-font);
+    outline: none;
   }
 
   :root {
     --primary: honeydew;
+    --alternate: blanchedalmond;
     --secondary: white;
+    --signup: lightblue;
     --primary-font: "Montserrat", sans-serif;
     --secondary-font: "Montserrat", sans-serif;
   }
