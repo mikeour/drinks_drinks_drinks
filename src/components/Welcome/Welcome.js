@@ -34,7 +34,7 @@ const Welcome = () => {
           grid-area: info;
           width: 100%;
           height: 100%;
-          background: blanchedalmond;
+          background: var(--alternate);
           position: relative;
         `}
       >
