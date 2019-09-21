@@ -5,6 +5,6 @@ export const aboutStyles = css`
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
-  background: blanchedalmond;
+  background: var(--alternate);
   padding: 10%;
 `;
