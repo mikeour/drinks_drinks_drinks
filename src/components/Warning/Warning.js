@@ -63,12 +63,12 @@ const Warning = () => {
               css={css`
                 font-size: 1.2rem;
                 padding: 0.3rem 2rem;
-                background: lightblue;
+                background: var(--signup);
                 border-radius: 3%;
               `}
               onClick={hideModal}
             >
-              Hide
+              Close
             </button>
           </div>
         </div>
