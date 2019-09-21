@@ -48,7 +48,7 @@ const Footer = () => {
           font-size: 0.75rem;
         `}
       >
-        ©{" "}
+        drinks, drinks, drinks ©{" "}
         <a
           href="https://www.github.com/mikeour"
           rel="noopener"
