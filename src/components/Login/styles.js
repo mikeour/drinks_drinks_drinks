@@ -44,7 +44,9 @@ export const formStyles = css`
     "create"
     "forgot";
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr minmax(30px, 1fr) 10px repeat(3, minmax(30px, 1fr)) 25px;
+  grid-template-rows:
+    2fr minmax(30px, 1fr) 10px repeat(3, minmax(30px, 1fr))
+    25px;
   grid-gap: 1rem;
   border: 2px solid #555;
   border-radius: 4%;
@@ -59,5 +61,17 @@ export const formStyles = css`
     transform: translate(-50%, -50%);
     height: 75%;
     width: 55%;
+    animation: fade 400ms ease-in;
+
+    @keyframes fade {
+      from {
+        transform: translate(-50%, -49%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
   }
 `;

@@ -8,27 +8,37 @@ import LoginIcon from "../../assets/login-icon.png";
 import { css, jsx } from "@emotion/core";
 import { hideModalStyles, showModalStyles, formStyles } from "./styles";
 
+// Initial Form state
+const initialState = {
+  username: "",
+  email: "",
+  password: ""
+};
+
 const Login = () => {
+  // Redux state
   const { searchQuery } = useSearchQuery();
   const { isModalShowing, showModal } = useModal();
-  const firstRender = useRef(true);
 
-  // Form state
-  const [formUsername, setFormUsername] = useState("");
-  const [formEmail, setFormEmail] = useState("");
-  const [formPassword, setFormPassword] = useState("");
+  // Local Form state
+  const [form, setForm] = useState(initialState);
+
+  // Ref
+  const firstRender = useRef(true);
 
   // After Modal closes, reset form value and firstRender ref
   const resetValues = () => {
-    setFormUsername("");
-    setFormEmail("");
-    setFormPassword("");
+    setForm(initialState);
     firstRender.current = true;
   };
 
-  const handleChange = (func, e) => {
+  // On user input, update target form field
+  const handleChange = (formField, e) => {
     const { value } = e.target;
-    func(value);
+    setForm(prevState => ({
+      ...prevState,
+      [formField]: value
+    }));
   };
 
   // As user inputs into form, trigger a delay followed by pop-up Modal
@@ -45,7 +55,7 @@ const Login = () => {
     }
 
     firstRender.current = false;
-  }, [formUsername, formEmail, formPassword]);
+  }, [form]);
 
   // If users attempts to search from this page, redirect view to home page
   if (searchQuery.length > 0) {
@@ -183,8 +193,8 @@ const Login = () => {
               `}
               type="text"
               placeholder="Enter Username"
-              value={formUsername}
-              onChange={e => handleChange(setFormUsername, e)}
+              value={form.username}
+              onChange={e => handleChange("username", e)}
             ></input>
             <div
               css={css`
@@ -233,8 +243,8 @@ const Login = () => {
               type="text"
               placeholder="Enter Email"
               name="email"
-              value={formEmail}
-              onChange={e => handleChange(setFormEmail, e)}
+              value={form.email}
+              onChange={e => handleChange("email", e)}
             ></input>
             <input
               css={css`
@@ -245,8 +255,8 @@ const Login = () => {
               `}
               type="password"
               placeholder="Enter Password"
-              value={formPassword}
-              onChange={e => handleChange(setFormPassword, e)}
+              value={form.password}
+              onChange={e => handleChange("password", e)}
             ></input>
             <div
               css={css`
