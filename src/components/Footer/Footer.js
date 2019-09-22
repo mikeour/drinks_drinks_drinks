@@ -51,7 +51,7 @@ const Footer = () => {
         drinks, drinks, drinks ©{" "}
         <a
           href="https://www.github.com/mikeour"
-          rel="noopener"
+          rel="noopener noreferrer"
           target="_blank"
           css={css`
             text-decoration: none;
