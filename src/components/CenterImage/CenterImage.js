@@ -42,7 +42,7 @@ const CenterImage = () => {
         css={centerImageStyles}
         className="animated shake"
         src={image}
-        alt="Shaking image of a cocktail"
+        alt="Shaking of a cocktail"
       />
       <p
         css={css`
