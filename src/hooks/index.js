@@ -1,21 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-
-import {
-  UPDATE_COCKTAILS,
-  CLEAR_COCKTAILS,
-  TOGGLE_LOADING_ON,
-  TOGGLE_LOADING_OFF,
-  UPDATE_DRINK,
-  UPDATE_NEXT_DRINK,
-  UPDATE_PREV_DRINK,
-  SHOW_DRINK_INFO,
-  HIDE_DRINK_INFO,
-  UPDATE_SEARCH_QUERY,
-  RESET_SEARCH_QUERY,
-  TOGGLE_SIDEBAR,
-  SHOW_MODAL,
-  HIDE_MODAL
-} from "../actions/";
+import { useRef } from "react";
+import types from "../types";
 
 export const useSearchQuery = () => {
   const dispatch = useDispatch();
@@ -23,10 +8,11 @@ export const useSearchQuery = () => {
 
   return {
     searchQuery,
-    setSearchQuery: payload => dispatch({ type: UPDATE_SEARCH_QUERY, payload }),
-    resetSearchQuery: () => dispatch({ type: RESET_SEARCH_QUERY }),
+    setSearchQuery: payload =>
+      dispatch({ type: types.UPDATE_SEARCH_QUERY, payload }),
+    resetSearchQuery: () => dispatch({ type: types.RESET_SEARCH_QUERY }),
     handleChange: e =>
-      dispatch({ type: UPDATE_SEARCH_QUERY, payload: e.target.value })
+      dispatch({ type: types.UPDATE_SEARCH_QUERY, payload: e.target.value })
   };
 };
 
@@ -37,10 +23,11 @@ export const useCocktailsList = () => {
   return {
     cocktails,
     loading,
-    setCocktails: payload => dispatch({ type: UPDATE_COCKTAILS, payload }),
-    clearCocktails: () => dispatch({ type: CLEAR_COCKTAILS }),
-    toggleLoadingOn: () => dispatch({ type: TOGGLE_LOADING_ON }),
-    toggleLoadingOff: () => dispatch({ type: TOGGLE_LOADING_OFF })
+    setCocktails: payload =>
+      dispatch({ type: types.UPDATE_COCKTAILS, payload }),
+    clearCocktails: () => dispatch({ type: types.CLEAR_COCKTAILS }),
+    toggleLoadingOn: () => dispatch({ type: types.TOGGLE_LOADING_ON }),
+    toggleLoadingOff: () => dispatch({ type: types.TOGGLE_LOADING_OFF })
   };
 };
 
@@ -50,7 +37,7 @@ export const useSidebar = () => {
 
   return {
     showSidebar,
-    handleSidebar: e => dispatch({ type: TOGGLE_SIDEBAR })
+    handleSidebar: e => dispatch({ type: types.TOGGLE_SIDEBAR })
   };
 };
 
@@ -65,11 +52,13 @@ export const useDrinkInfo = () => {
     nextDrink,
     prevDrink,
     showDrinkInfo,
-    setDrink: payload => dispatch({ type: UPDATE_DRINK, payload }),
-    setNextDrink: payload => dispatch({ type: UPDATE_NEXT_DRINK, payload }),
-    setPrevDrink: payload => dispatch({ type: UPDATE_PREV_DRINK, payload }),
-    toggleDrinkInfoOn: () => dispatch({ type: SHOW_DRINK_INFO }),
-    toggleDrinkInfoOff: () => dispatch({ type: HIDE_DRINK_INFO })
+    setDrink: payload => dispatch({ type: types.UPDATE_DRINK, payload }),
+    setNextDrink: payload =>
+      dispatch({ type: types.UPDATE_NEXT_DRINK, payload }),
+    setPrevDrink: payload =>
+      dispatch({ type: types.UPDATE_PREV_DRINK, payload }),
+    toggleDrinkInfoOn: () => dispatch({ type: types.SHOW_DRINK_INFO }),
+    toggleDrinkInfoOff: () => dispatch({ type: types.HIDE_DRINK_INFO })
   };
 };
 
@@ -79,7 +68,14 @@ export const useModal = () => {
 
   return {
     isModalShowing,
-    showModal: () => dispatch({ type: SHOW_MODAL }),
-    hideModal: () => dispatch({ type: HIDE_MODAL })
+    showModal: () => dispatch({ type: types.SHOW_MODAL }),
+    hideModal: () => dispatch({ type: types.HIDE_MODAL })
   };
+};
+
+export const useDictionary = letters => {
+  return letters.reduce((acc, letter) => {
+    acc[letter] = useRef(letter);
+    return acc;
+  }, {});
 };
