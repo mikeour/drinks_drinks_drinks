@@ -10,15 +10,18 @@ const Suggestion = ({ type }) => {
   const { setSearchQuery } = useSearchQuery();
   const { toggleDrinkInfoOff } = useDrinkInfo();
 
-  const getIngredient = type => {
+  const getRandomIngredient = type => {
     const min = 0;
     const max = ingredients[type].length;
+    // Return random ingredient from array
     return ingredients[type][Math.floor(Math.random() * (max - min)) + min];
   };
 
-  const ingredient = useMemo(() => getIngredient(type), []);
+  // Memoizing ingredient so it persists across renders
+  const ingredient = useMemo(() => getRandomIngredient(type), [type]);
 
-  const reset = () => {
+  // On click, start searching for this ingredient and toggle info display off
+  const setSearchandClearInfo = () => {
     setSearchQuery(`${ingredient}`);
     toggleDrinkInfoOff();
   };
@@ -26,7 +29,7 @@ const Suggestion = ({ type }) => {
   return (
     <span
       css={linkStyles}
-      onClick={reset}
+      onClick={setSearchandClearInfo}
       data-testid="suggestion"
       role="button"
     >
