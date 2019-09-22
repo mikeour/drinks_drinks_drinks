@@ -4,7 +4,12 @@ import CloseIcon from "../../assets/close.png";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { closeStyles, mainInfoStyles } from "./styles";
+import {
+  closeStyles,
+  mainInfoStyles,
+  ingredientStyles,
+  measurementStyles
+} from "./styles";
 
 const Redirect = ({ ingredient }) => {
   const { setSearchQuery } = useSearchQuery();
@@ -84,12 +89,7 @@ const Info = () => {
             width: 100%;
           `}
         >
-          <div
-            css={css`
-              display: flex;
-              justify-content: space-between;
-            `}
-          >
+          <div css={ingredientStyles}>
             <div
               css={css`
                 font-size: 0.75rem;
@@ -107,12 +107,7 @@ const Info = () => {
               <em>Measurements</em>
             </div>
           </div>
-          <div
-            css={css`
-              display: flex;
-              justify-content: space-between;
-            `}
-          >
+          <div css={ingredientStyles}>
             <div>
               <Redirect ingredient={drink.strIngredient1} />
             </div>
@@ -124,95 +119,40 @@ const Info = () => {
               {drink.strMeasure1}
             </div>
           </div>
-          <div
-            css={css`
-              display: flex;
-              justify-content: space-between;
-            `}
-          >
+          <div css={ingredientStyles}>
             <div>
               <Redirect ingredient={drink.strIngredient2} />
             </div>
-            <div
-              css={css`
-                font-size: 0.75rem;
-              `}
-            >
-              {drink.strMeasure2}
-            </div>
+            <div css={measurementStyles}>{drink.strMeasure2}</div>
           </div>
-          <div
-            css={css`
-              display: flex;
-              justify-content: space-between;
-            `}
-          >
+          <div css={ingredientStyles}>
             <div>
               <Redirect ingredient={drink.strIngredient3} />
             </div>
-            <div
-              css={css`
-                font-size: 0.75rem;
-              `}
-            >
-              {drink.strMeasure3}
-            </div>
+            <div css={measurementStyles}>{drink.strMeasure3}</div>
           </div>
           {drink.strIngredient4 && (
-            <div
-              css={css`
-                display: flex;
-                justify-content: space-between;
-              `}
-            >
+            <div css={ingredientStyles}>
               <div>
                 <Redirect ingredient={drink.strIngredient4} />
               </div>
-              <div
-                css={css`
-                  font-size: 0.75rem;
-                `}
-              >
-                {drink.strMeasure4}
-              </div>
+              <div css={measurementStyles}>{drink.strMeasure4}</div>
             </div>
           )}
           {drink.strIngredient5 && (
-            <div
-              css={css`
-                display: flex;
-                justify-content: space-between;
-              `}
-            >
+            <div css={ingredientStyles}>
               <div>
                 <Redirect ingredient={drink.strIngredient5} />
               </div>
-              <div
-                css={css`
-                  font-size: 0.75rem;
-                `}
-              >
-                {drink.strMeasure5}
-              </div>
+              <div css={measurementStyles}>{drink.strMeasure5}</div>
             </div>
           )}
           {drink.strIngredient6 && (
-            <div
-              css={css`
-                display: flex;
-                justify-content: space-between;
-              `}
-            >
+            <div css={ingredientStyles}>
               <div>
                 <Redirect ingredient={drink.strIngredient6} />
               </div>
-              <div
-                css={css`
-                  font-size: 0.75rem;
-                `}
-              >
-                {drink.strMeasure6}
-              </div>
+              <div css={measurementStyles}>{drink.strMeasure6}</div>
             </div>
           )}
         </div>
@@ -248,11 +188,7 @@ const Info = () => {
             width: 75%;
           `}
         >
-          <p
-            css={css`
-              font-size: 0.75rem;
-            `}
-          >
+          <p css={measurementStyles}>
             <em
               css={css`
                 padding: 0.6rem;

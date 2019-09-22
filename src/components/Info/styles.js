@@ -26,3 +26,12 @@ export const mainInfoStyles = css`
   grid-gap: 0.5rem;
   background-color: var(--secondary);
 `;
+
+export const ingredientStyles = css`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const measurementStyles = css`
+  font-size: 0.75rem;
+`;
