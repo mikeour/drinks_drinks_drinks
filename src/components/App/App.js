@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import Sidebar from "../Sidebar/Sidebar";
 import Forgot from "../Forgot/Forgot";
 import Spinner from "../Spinner/Spinner";
+import Page from "../Page/Page";
 
 const Signup = lazy(() => import("../Signup/Signup"));
 const Login = lazy(() => import("../Login/Login"));
@@ -23,7 +24,8 @@ const App = () => {
     setCocktails,
     clearCocktails,
     toggleLoadingOff,
-    toggleLoadingOn
+    toggleLoadingOn,
+    loading
   } = useCocktailsList();
   const { showSidebar } = useSidebar();
 
@@ -57,9 +59,13 @@ const App = () => {
       <Global styles={globalStyles} />
       <Sidebar />
       <Nav />
-      <React.Suspense fallback={<Spinner />}>
+      <React.Suspense fallback={<Page />}>
         <Switch>
-          <Route exact path="/" component={Grid} />
+          <Route
+            exact
+            path="/"
+            render={() => (loading ? <Spinner /> : <Grid />)}
+          />
           <Route
             path="/drink/"
             render={({ location }) => <Drink location={location} />}
