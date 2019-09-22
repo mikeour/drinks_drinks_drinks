@@ -1,4 +1,4 @@
-import { SHOW_MODAL, HIDE_MODAL } from "../actions";
+import types from "../types";
 
 const initialState = {
   isModalShowing: false
@@ -6,9 +6,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SHOW_MODAL:
+    case types.SHOW_MODAL:
       return { ...state, isModalShowing: true };
-    case HIDE_MODAL:
+    case types.HIDE_MODAL:
       return { ...state, isModalShowing: false };
     default:
       return state;

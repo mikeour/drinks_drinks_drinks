@@ -1,4 +1,4 @@
-import { TOGGLE_SIDEBAR } from "../actions";
+import types from "../types";
 
 const initialState = {
   showSidebar: false
@@ -6,7 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_SIDEBAR:
+    case types.TOGGLE_SIDEBAR:
       return { ...state, showSidebar: !state.showSidebar };
     default:
       return state;
