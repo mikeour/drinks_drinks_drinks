@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useSearchQuery, useCocktailsList, useSidebar } from "../../hooks";
 import Nav from "../Nav/Nav";
 import Grid from "../Grid/Grid";
-import Login from "../Login/Login";
-import Signup from "../Signup/Signup";
 import About from "../About/About";
 import Drink from "../Drink/Drink";
 import Footer from "../Footer/Footer";
 import Sidebar from "../Sidebar/Sidebar";
 import Forgot from "../Forgot/Forgot";
+import Spinner from "../Spinner/Spinner";
+
+const Signup = lazy(() => import("../Signup/Signup"));
+const Login = lazy(() => import("../Login/Login"));
 
 /** @jsx jsx */
 import { Global, jsx } from "@emotion/core";
@@ -55,17 +57,19 @@ const App = () => {
       <Global styles={globalStyles} />
       <Sidebar />
       <Nav />
-      <Switch>
-        <Route exact path="/" component={Grid} />
-        <Route
-          path="/drink/"
-          render={({ location }) => <Drink location={location} />}
-        />
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
-        <Route path="/about" component={About} />
-        <Route path="/forgot" component={Forgot} />
-      </Switch>
+      <React.Suspense fallback={<Spinner />}>
+        <Switch>
+          <Route exact path="/" component={Grid} />
+          <Route
+            path="/drink/"
+            render={({ location }) => <Drink location={location} />}
+          />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/about" component={About} />
+          <Route path="/forgot" component={Forgot} />
+        </Switch>
+      </React.Suspense>
       <Footer />
     </div>
   );
