@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Cocktails from "../Cocktails/Cocktails";
 import Welcome from "../Welcome/Welcome";
 import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
 import Spinner from "../Spinner/Spinner";
-import { useCocktailsList, useDrinkInfo } from "../../hooks";
+import { useCocktailsList, useDrinkInfo, useDictionary } from "../../hooks";
 import alphabet from "../../utils/alphabet";
 
 /** @jsx jsx */
@@ -21,12 +21,8 @@ import {
 const Grid = () => {
   const { cocktails, loading } = useCocktailsList();
   const { showDrinkInfo } = useDrinkInfo();
+  const refDictionary = useDictionary(alphabet);
   const [firstLetters, setFirstLetters] = useState([]);
-
-  const refDictionary = alphabet.reduce((acc, letter) => {
-    acc[letter] = useRef(letter);
-    return acc;
-  }, {});
 
   const handleClick = letter => {
     refDictionary[letter].current.scrollIntoView({
@@ -95,13 +91,13 @@ const Grid = () => {
             >
               <p>Other popular searches:</p>
               <div css={suggestionStyles}>
-                <Suggestion />
+                <Suggestion type="light" />
               </div>
               <div css={suggestionStyles}>
-                <Suggestion />
+                <Suggestion type="dark" />
               </div>
               <div css={suggestionStyles}>
-                <Suggestion />
+                <Suggestion type="exotic" />
               </div>
             </div>
           </div>
@@ -153,6 +149,7 @@ const Grid = () => {
                   css={doesExist ? boldLetterStyles : regularLetterStyles}
                   onClick={() => handleClick(char)}
                   key={char}
+                  role="button"
                 >
                   {char}
                 </div>
