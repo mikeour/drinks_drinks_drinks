@@ -17,29 +17,38 @@ import {
   buttonStyles
 } from "./styles";
 
+// Initial Form state
+const initialState = {
+  username: "",
+  email: "",
+  password: "",
+  repeatPassword: ""
+};
+
 const Signup = () => {
+  // Redux state
   const { searchQuery } = useSearchQuery();
   const { isModalShowing, showModal } = useModal();
-  const firstRender = useRef(true);
 
-  // Form state
-  const [formUsername, setFormUsername] = useState("");
-  const [formEmail, setFormEmail] = useState("");
-  const [formPassword, setFormPassword] = useState("");
-  const [formRepeatPassword, setFormRepeatPassword] = useState("");
+  // Local Form state
+  const [form, setForm] = useState(initialState);
+
+  // Ref
+  const firstRender = useRef(true);
 
   // After Modal closes, reset form values and firstRender ref
   const resetValues = () => {
-    setFormUsername("");
-    setFormEmail("");
-    setFormPassword("");
-    setFormRepeatPassword("");
+    setForm(initialState);
     firstRender.current = true;
   };
 
-  const handleChange = (func, e) => {
+  // On user input, update target form field
+  const handleChange = (formField, e) => {
     const { value } = e.target;
-    func(value);
+    setForm(prevState => ({
+      ...prevState,
+      [formField]: value
+    }));
   };
 
   // As user inputs into form, trigger a delay followed by pop-up Modal
@@ -56,7 +65,7 @@ const Signup = () => {
     }
 
     firstRender.current = false;
-  }, [formUsername, formEmail, formPassword, formRepeatPassword]);
+  }, [form]);
 
   // If users attempts to search from this page, redirect view to home page
   if (searchQuery.length > 0) {
@@ -122,6 +131,7 @@ const Signup = () => {
             <div css={headerStyles}>
               <img
                 src={SigninIcon}
+                alt=""
                 css={css`
                   width: 17%;
                   height: 17%;
@@ -149,8 +159,8 @@ const Signup = () => {
               type="text"
               placeholder="Enter Username"
               name="name"
-              value={formUsername}
-              onChange={e => handleChange(setFormUsername, e)}
+              value={form.username}
+              onChange={e => handleChange("username", e)}
             ></input>
             <div
               css={css`
@@ -199,8 +209,8 @@ const Signup = () => {
               type="email"
               placeholder="Enter Email"
               name="email"
-              value={formEmail}
-              onChange={e => handleChange(setFormEmail, e)}
+              value={form.email}
+              onChange={e => handleChange("email", e)}
             ></input>
             <input
               css={css`
@@ -212,8 +222,8 @@ const Signup = () => {
               type="password"
               placeholder="Enter Password"
               name="password"
-              value={formPassword}
-              onChange={e => handleChange(setFormPassword, e)}
+              value={form.password}
+              onChange={e => handleChange("password", e)}
             ></input>
             <input
               css={css`
@@ -224,8 +234,8 @@ const Signup = () => {
               `}
               type="password"
               placeholder="Repeat Password"
-              value={formRepeatPassword}
-              onChange={e => handleChange(setFormRepeatPassword, e)}
+              value={form.repeatPassword}
+              onChange={e => handleChange("repeatPassword", e)}
             ></input>
             <div
               css={css`

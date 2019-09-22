@@ -47,10 +47,23 @@ export const textContentStyles = css`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: fade 400ms ease-in;
+
+    @keyframes fade {
+      from {
+        transform: translate(-50%, -49%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
   }
 
   @media (max-width: 700px) {
     padding: 2rem;
+    animation: none;
   }
 `;
 
@@ -66,7 +79,9 @@ export const formStyles = css`
     "create"
     "terms";
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr minmax(30px, 1fr) 10px repeat(4, minmax(30px, 1fr)) 20px;
+  grid-template-rows:
+    2fr minmax(30px, 1fr) 10px repeat(4, minmax(30px, 1fr))
+    20px;
   grid-gap: 1rem;
   border: 2px solid #555;
   border-radius: 4%;
@@ -81,6 +96,18 @@ export const formStyles = css`
     transform: translate(-50%, -50%);
     height: 80%;
     width: 57.5%;
+    animation: fade 400ms ease-in;
+
+    @keyframes fade {
+      from {
+        transform: translate(-50%, -49%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
   }
 `;
 
