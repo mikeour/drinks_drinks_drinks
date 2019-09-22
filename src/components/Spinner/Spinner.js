@@ -20,7 +20,11 @@ const Spinner = () => {
           padding: 5rem;
         `}
       >
-        <img src={ShakerIcon} className="animated shake infinite slow"></img>
+        <img
+          src={ShakerIcon}
+          className="animated shake infinite slow"
+          alt="Animated shaker icon"
+        ></img>
       </div>
     </div>
   );
