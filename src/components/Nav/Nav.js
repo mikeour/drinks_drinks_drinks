@@ -47,6 +47,7 @@ const Nav = () => {
             width: 30%;
           `}
           src={HomeIcon}
+          alt="Home icon"
         ></img>
       </Link>
       <Link css={linkStyles} onClick={resetSearch} to="/">
@@ -63,7 +64,12 @@ const Nav = () => {
         />
         <span css={spanStyles}>Search for ingredients here...</span>
         {searchQuery.length > 0 && (
-          <img css={closeStyles} src={CloseIcon} onClick={resetSearchQuery} />
+          <img
+            css={closeStyles}
+            src={CloseIcon}
+            onClick={resetSearchQuery}
+            alt="Close icon"
+          />
         )}
       </label>
     </nav>
