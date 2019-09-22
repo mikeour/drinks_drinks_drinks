@@ -15,7 +15,7 @@ jest.mock("../src/hooks/index.js", () => ({
 
 describe("<Suggestion />", () => {
   it("should render a clickable span", () => {
-    const { queryByTestId } = render(<Suggestion />);
+    const { queryByTestId } = render(<Suggestion type="light" />);
 
     expect(queryByTestId("suggestion")).toBeTruthy();
     fireEvent.click(queryByTestId("suggestion"));
