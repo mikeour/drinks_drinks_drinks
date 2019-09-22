@@ -6,17 +6,17 @@ import ingredients from "../../utils/ingredients";
 import { jsx } from "@emotion/core";
 import { linkStyles } from "./styles";
 
-const Suggestion = () => {
+const Suggestion = ({ type }) => {
   const { setSearchQuery } = useSearchQuery();
   const { toggleDrinkInfoOff } = useDrinkInfo();
 
-  const getIngredient = () => {
+  const getIngredient = type => {
     const min = 0;
-    const max = ingredients.length;
-    return ingredients[Math.floor(Math.random() * (max - min)) + min];
+    const max = ingredients[type].length;
+    return ingredients[type][Math.floor(Math.random() * (max - min)) + min];
   };
 
-  const ingredient = useMemo(() => getIngredient(), []);
+  const ingredient = useMemo(() => getIngredient(type), []);
 
   const reset = () => {
     setSearchQuery(`${ingredient}`);
