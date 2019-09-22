@@ -14,20 +14,26 @@ const Forgot = () => {
     >
       <div
         css={css`
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          display: flex;
-          flex-direction: column;
-          border: 2px solid #555;
-          border-radius: 4%;
-          padding: 2rem 3rem;
-          background: white;
-          box-shadow: 10px 13px 10px -5px rgba(0, 0, 0, 0.26);
-          text-align: center;
-          justify-content: center;
-          width: 35%;
+          @media (min-width: 700px) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #555;
+            border-radius: 4%;
+            padding: 2rem 3rem;
+            background: white;
+            box-shadow: 10px 13px 10px -5px rgba(0, 0, 0, 0.26);
+            text-align: center;
+            justify-content: center;
+            width: 35%;
+          }
+
+          @media (max-width: 700px) {
+            padding: 2rem;
+          }
         `}
       >
         <h1
@@ -94,6 +100,7 @@ const Forgot = () => {
               margin: 1rem 0 0 0;
               transition: background 250ms;
               text-decoration: none;
+              text-align: center;
 
               :hover {
                 cursor: pointer;
