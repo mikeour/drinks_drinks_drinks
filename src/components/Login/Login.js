@@ -81,10 +81,23 @@ const Login = () => {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                animation: fade 400ms ease-in;
+
+                @keyframes fade {
+                  from {
+                    transform: translate(-50%, -49%);
+                    opacity: 0;
+                  }
+                  to {
+                    transform: translate(-50%, -50%);
+                    opacity: 1;
+                  }
+                }
               }
 
               @media (max-width: 700px) {
                 padding: 2rem;
+                animation: none;
               }
             `}
           >
