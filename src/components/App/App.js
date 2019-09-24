@@ -15,7 +15,7 @@ const Signup = lazy(() => import("../Signup/Signup"));
 const Login = lazy(() => import("../Login/Login"));
 
 /** @jsx jsx */
-import { Global, jsx } from "@emotion/core";
+import { Global, css, jsx } from "@emotion/core";
 import { globalStyles, showSidebarStyles, hideSidebarStyles } from "./styles";
 
 const App = () => {
@@ -48,6 +48,7 @@ const App = () => {
       return () => clearTimeout(delayBeforeSearch);
     } else {
       clearCocktails();
+      toggleLoadingOff();
     }
   }, [searchQuery]);
 
@@ -74,6 +75,21 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/about" component={About} />
           <Route path="/forgot" component={Forgot} />
+          <Route
+            component={({ location }) => {
+              return (
+                <div
+                  css={css`
+                    padding: 50px;
+                    width: 100%;
+                    text-align: center;
+                  `}
+                >
+                  The page <code>{location.pathname}</code> could not be found.
+                </div>
+              );
+            }}
+          />
         </Switch>
       </React.Suspense>
       <Footer />
