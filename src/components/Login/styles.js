@@ -22,14 +22,14 @@ export const showModalStyles = css`
   grid-template-columns: 1.25fr 1fr;
   grid-template-rows: 1fr;
   overflow-y: auto;
-  transition: filter 500ms linear;
-  filter: blur(3px);
+  transition: filter 250ms linear;
+  filter: blur(5px);
 
   @media (max-width: 800px) {
     display: flex;
     flex-direction: column;
-    transition: filter 500ms linear;
-    filter: blur(3px);
+    transition: filter 250ms linear;
+    filter: blur(5px);
   }
 `;
 
